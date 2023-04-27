@@ -1,3 +1,208 @@
-<p>view-aspirant works!</p>
+<!--
+<button (click)="regresar()">Aceptar</button>
 
-{{idAspirant}}
+<div class="container">
+
+  <div class="exTab2">
+    <h3>Informacion del Aspirante</h3>
+  </div>
+
+
+  <form class="example-form">
+    <mat-grid-list cols="2" rowHeight="50px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>ID Aspirante</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.id}}{{dataAspirant.tipoAspirant}} </mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Nombre</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.name}}</mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Apellido Paterno</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.lastNameP}}</mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Apellido Materno</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.lastNameM}}</mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Curp</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.curp}} </mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Condicion/Enfermedad</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.conditionS}} </mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Sexo</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.sex}} </mat-label>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</div>
+
+<div class="container">
+
+  <div class="exTab2">
+    <h3>Informacion Direcci&oacute;n</h3>
+  </div>
+
+
+  <form class="example-form">
+    <mat-grid-list cols="2" rowHeight="50px">
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Calle</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.address.street}}</mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Numero</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.address.number}}</mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Colonia</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.address.colony}} </mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Municipio</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.address.municipality}}</mat-label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-label>Codigo Postal</mat-label>
+        <div class="borderContent">
+          <mat-label class="labelContent">{{dataAspirant.address.postal_code}} </mat-label>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</div>
+
+<div class="container">
+
+  <div class="exTab2">
+    <h3>Informacion Padre o tutor</h3>
+  </div>
+
+  <div *ngFor="let fatherTutor of dataAspirant.fatherTutor ">
+    <div class="exTab3">
+      <h3>Informacion</h3>
+    </div>
+    <form class="example-form">
+      <mat-grid-list cols="2" rowHeight="50px">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Nombre</mat-label>
+          <div class="borderContent">
+            <mat-label class="labelContent">{{fatherTutor.name}}</mat-label>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Apellido Paterno</mat-label>
+          <div class="borderContent">
+            <mat-label class="labelContent">{{fatherTutor.lastNameP}}</mat-label>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Apellido Materno</mat-label>
+          <div class="borderContent">
+            <mat-label class="labelContent">{{fatherTutor.lastNameM}} </mat-label>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Telefono 1</mat-label>
+          <div class="borderContent">
+            <mat-label class="labelContent">{{fatherTutor.phone1}}</mat-label>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Telefono 2</mat-label>
+          <div class="borderContent">
+            <mat-label class="labelContent">{{fatherTutor.phone2}}</mat-label>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Correo Electronico</mat-label>
+          <div class="borderContent">
+            <mat-label class="labelContent">{{fatherTutor.email}} </mat-label>
+          </div>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </div>
+</div>
+ -->
+
+
+<div class="titleSeparation">
+  <h3>Informacion del Aspirante</h3>
+</div>
+
+<div class="container">
+
+  <form>
+
+    <div>
+      <div class="leftcontact">
+        <div class="form-group">
+          <p>Function</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirant.id}}{{dataAspirant.tipoAspirant}} </mat-label>
+          </div>
+        </div>
+      </div>
+
+      <div class="rightcontact">
+        <div class="form-group">
+          <p>Function</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirant.id}}{{dataAspirant.tipoAspirant}} </mat-label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
