@@ -1,0 +1,56 @@
+
+.container {
+  display: flex; /* Utilizamos flexbox para centrar verticalmente el div interior */
+  align-items: center; /* Centramos verticalmente el div interior */
+  justify-content: center; /* Centramos horizontalmente el div interior */
+}
+
+.borderContent{
+  width: 300px;
+  height: 35px;
+  border: rgb(138, 138, 138) solid;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.labelContent{
+  margin-left: 5px;
+  color: #424242;
+}
+
+.form-group{
+  padding-top: 20px;
+}
+
+  .icon-case {
+    height:40px;
+    width: 35px;
+    float: left;
+    border-radius: 5px 0px 0px 5px;
+    background:rgb(138, 138, 138);
+    position: relative;
+    line-height:40px;
+  }
+
+
+  .leftcontact {
+    width:49.5%;
+    float:left;
+    border-right: 1px dotted #CCC;
+    box-sizing: border-box;
+    padding: 0px 15px 0px 0px;
+  }
+
+  .rightcontact {
+    width:49.5%;
+    float:right;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 15px;
+  }
+
+  .titleSeparation{
+    padding: 25px 0 0 25px;
+    border: rgb(138, 138, 138) solid;
+    height: 20px;
+  }

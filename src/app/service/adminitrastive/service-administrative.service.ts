@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
 
 export class ServiceAdministrativeService {
 
-  private url: string=  environment._apiURL+ 'administrative/3';
+  private url: string=  environment._apiURL+ 'administrative/1';
 
   constructor(private http: HttpClient) { }
 

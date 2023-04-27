@@ -22,7 +22,7 @@ export class ServiceIdAspirantService {
     this.idAspirant = valor;
   }
 
-  public getData(): Observable<any> {
+  public getData(): Observable<Aspirant> {
     return this.http.get<Aspirant>(this.url+ this.idAspirant);
   }
 }

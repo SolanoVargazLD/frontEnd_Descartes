@@ -5,7 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { aspirantNivelBasic } from 'src/app/interface/aspirantBasic_interface';
 import { ServiceIdAspirantService } from '../../../../service/share_Inf/service-id-aspirant.service';
 
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-basic-preescolar',
@@ -19,7 +20,7 @@ export class BasicPreescolarComponent implements OnInit {
   dataVacio: boolean= false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private serviceAspirantBasicService: ServiceAspirantBasicService, private serviceSharedAspirant: ServiceIdAspirantService) {}
+  constructor(private serviceAspirantBasicService: ServiceAspirantBasicService, private serviceSharedAspirant: ServiceIdAspirantService, private router: Router) {}
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
@@ -33,13 +34,9 @@ export class BasicPreescolarComponent implements OnInit {
   readDataServiceAspirantBasic() {
     this.serviceAspirantBasicService.getData().subscribe((dataAspirantBasic) => {
       this.dataSource= new MatTableDataSource<aspirantNivelBasic>(dataAspirantBasic);
-      this.readPaginator();
-      this.dataVacio= (this.dataSource.length===0)?true: false;
-    });
-  }
-
-  readPaginator() {
       this.dataSource.paginator = this.paginator;
+      this.dataVacio= (this.dataSource.length ===0)?true: false;
+    });
   }
 
   openDialog(id: number, nombre:string, apP: string, apM: string, curp: string): void {
@@ -64,7 +61,9 @@ export class BasicPreescolarComponent implements OnInit {
   }
 
   clickViewAspirant(id: number){
+    // routerLink="/dashboard/View_Aspirant";
     this.serviceSharedAspirant.setIdAspirant(id);
+    this.router.navigate(["/dashboard/View_Aspirant"],{queryParams:{name: '/dashboard/Preescolar'}});
   }
 
 }
