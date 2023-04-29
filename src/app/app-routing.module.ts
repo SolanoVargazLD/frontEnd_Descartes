@@ -7,7 +7,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},//TODO direccion a login
   {path:'dashboard',loadChildren: ()=> import('./components/dashboard/dashboard.module').then(x=> x.DashboardModule)},
   {path: '**', redirectTo: 'login', pathMatch:'full'}, //TODO Redireccionar a login, normalmente es el error 404
-
 ];
 
 @NgModule({

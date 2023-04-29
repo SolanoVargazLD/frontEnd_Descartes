@@ -6,7 +6,7 @@
 }
 
 .borderContent{
-  width: 300px;
+  width: 400px;
   height: 35px;
   border: rgb(138, 138, 138) solid;
   border-radius: 7px;
@@ -49,8 +49,34 @@
     padding: 0px 0px 0px 15px;
   }
 
-  .titleSeparation{
-    padding: 25px 0 0 25px;
-    border: rgb(138, 138, 138) solid;
-    height: 20px;
+  .containerSeparator {
+    display: flex; /* Utilizamos flexbox para centrar verticalmente el div interior */
+    align-items: center; /* Centramos verticalmente el div interior */
+    justify-content: center; /* Centramos horizontalmente el div interior */
+  }
+
+  .separador-texto {
+    font-size: 18px;
+    height: 40px;
+    width: 90%;
+    margin-top: 30px;
+    padding-left: 20px;
+    color: white;
+    background-color: rgb(25, 30, 71);
+  }
+
+  .containerSeparatorInt{
+    display: flex; /* Utilizamos flexbox para centrar verticalmente el div interior */
+    align-items: center; /* Centramos verticalmente el div interior */
+    justify-content: center; /* Centramos horizontalmente el div interior */
+  }
+
+  .separador-textoInt {
+    font-size: 16px;
+    height: 40px;
+    width: 80%;
+    margin-top: 30px;
+    padding-left: 5px;
+    color: white;
+    background-color: rgb(41, 49, 112);
   }

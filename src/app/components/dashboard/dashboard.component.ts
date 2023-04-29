@@ -1,8 +1,9 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ServiceAdministrativeService } from 'src/app/service/adminitrastive/service-administrative.service';
+import { Adminitrastive } from 'src/app/interface/adminitrastive_interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +12,16 @@ import { ServiceAdministrativeService } from 'src/app/service/adminitrastive/ser
 })
 export class DashboardComponent {
 
-  dataAdmin: any;
-  nombre_Usuario:string="";
+  dataAdmin: Adminitrastive= {
+    id: 0,
+    name: '',
+    lastNameP: '',
+    lastNameM: '',
+    email: '',
+    phone: '',
+    // password: ''
+  };
+  nombre_Usuario: string = '';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,10 +29,11 @@ export class DashboardComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private serviceAdministrativeService:ServiceAdministrativeService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private serviceAdministrativeService: ServiceAdministrativeService) { }
 
   ngOnInit(): void {
     this.leerDataAdminitrastive();
+    // this.nombre_Usuario = `${this.dataAdmin.name} ${this.dataAdmin.lastNameP} ${this.dataAdmin.lastNameM}`
   }
 
   leerDataAdminitrastive(){
@@ -33,3 +43,4 @@ export class DashboardComponent {
     })
   }
 }
+

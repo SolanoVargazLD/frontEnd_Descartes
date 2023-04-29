@@ -1,1 +1,42 @@
-<p>perfil-inicio-dashboard works!</p>
+<body>
+  <div class="form-container">
+
+    <div class="welcome-screen-container">
+      <img src="assets/logs/uniDEscartesLogWeb.webp" alt="">
+    </div>
+    <div class="login-container">
+      <h2>Bienvenido</h2>
+
+      <form>
+        <div class="form-group">
+          <p>Adminitrativo</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent"> {{adminitrastive.name}} {{adminitrastive.lastNameP}} {{adminitrastive.lastNameM}}  </mat-label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p>Correo Electronico</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent"> {{adminitrastive.email}} </mat-label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p>Telefono</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent"> {{adminitrastive.phone}} </mat-label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+{{adminitrastive | json}}
+
+
+

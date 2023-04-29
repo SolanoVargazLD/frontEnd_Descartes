@@ -40,7 +40,6 @@ export class BasicPreescolarComponent implements OnInit {
   }
 
   openDialog(id: number, nombre:string, apP: string, apM: string, curp: string): void {
-    console.log(this.dataSource);
     Swal.fire({
       title: 'ADVERTENCIA',
       text: `Esta seguro(a) de eliminar al Aspirante de Preescolar ${id} ${nombre} ${apP} ${apM} - ${curp}`,

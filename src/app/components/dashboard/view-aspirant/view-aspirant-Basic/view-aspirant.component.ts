@@ -8,7 +8,9 @@ import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-a
   templateUrl: './view-aspirant.component.html',
   styleUrls: ['./view-aspirant.component.css']
 })
+
 export class ViewAspirantComponent implements OnInit{
+
   dataAspirant: Aspirant= {
     id: 0,
     name: '',
@@ -29,7 +31,9 @@ export class ViewAspirantComponent implements OnInit{
       postal_code: ''
     }
   };
+
   rutAnt!: string;
+
 
   constructor(private serviceSharedAspirant: ServiceIdAspirantService, private router: ActivatedRoute, private routerNav:Router) {}
 

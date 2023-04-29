@@ -1,0 +1,73 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.form-container {
+  background-color: white;
+  width: 80%;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 90vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.form-container .login-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-container .login-container > h2 {
+  font-size: 2.5rem;
+}
+
+.form-container .login-container > p {
+  color: #555;
+  text-align: center;
+}
+
+.form-container .login-container label {
+  display: block;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.form-container .welcome-screen-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+}
+
+.form-container .welcome-screen-container img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.form-group{
+  padding-top: 20px;
+}
+
+.borderContent{
+  width: 500px;
+  height: 35px;
+  border: rgb(138, 138, 138) solid;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.labelContent{
+  margin-left: 5px;
+  color: #424242;
+}
+
+.login-container h2{
+  padding-bottom:25px;
+}
+
