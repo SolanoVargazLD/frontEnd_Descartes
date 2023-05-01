@@ -46,7 +46,7 @@
           <a routerLink="/dashboard/View_Aspirant" title="" queryParamsHandling="merge" (click)="clickViewAspirant(element.id)" class="pointer" style="color: #03A600" matTooltip="Ver Aspirante">
             <mat-icon>visibility</mat-icon>
           </a>
-          <a class="pointer" style="color: #005DA6;" matTooltip="Modificar Aspirante" title="">
+          <a routerLink="/dashboard/ModifyAspirant" class="pointer" style="color: #005DA6;" matTooltip="Modificar Aspirante" title="">
             <mat-icon>edit</mat-icon>
           </a>
           <a class="pointer" (click)="openDialog(element.id, element.name, element.lastNameP, element.lastNameM, element.curp)" style="color: #FF0000;  margin-right: 8px;" title=""

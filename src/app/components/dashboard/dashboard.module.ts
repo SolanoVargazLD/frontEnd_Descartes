@@ -10,10 +10,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { BasicPreescolarComponent } from './basic/basic-preescolar/basic-preescolar.component';
+import { BasicPreescolarComponent } from './basic/nivel-basic/basic-preescolar.component';
 import { PerfilInicioDashboardComponent } from './perfil-inicio-dashboard/perfil-inicio-dashboard.component';
-import { ViewAspirantComponent } from './view-aspirant/view-aspirant-Basic/view-aspirant.component';
 import { FormatAdministratorPipe } from 'src/app/pipes/pipeDashboard/format-administrator.pipe';
+import { ModifyAspirantBasicComponent } from './basic/nivel-basic/modify-aspirant-basic/modify-aspirant-basic.component';
+import { ViewAspirantComponent } from './basic/nivel-basic/view-aspirant-Basic/view-aspirant.component';
 
 
 @NgModule({
@@ -21,8 +22,9 @@ import { FormatAdministratorPipe } from 'src/app/pipes/pipeDashboard/format-admi
     DashboardComponent,
     BasicPreescolarComponent,
     PerfilInicioDashboardComponent,
+    FormatAdministratorPipe,
     ViewAspirantComponent,
-    FormatAdministratorPipe
+    ModifyAspirantBasicComponent
   ],
   imports: [
     CommonModule,

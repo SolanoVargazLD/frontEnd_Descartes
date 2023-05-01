@@ -33,13 +33,11 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.leerDataAdminitrastive();
-    // this.nombre_Usuario = `${this.dataAdmin.name} ${this.dataAdmin.lastNameP} ${this.dataAdmin.lastNameM}`
   }
 
   leerDataAdminitrastive(){
     this.serviceAdministrativeService.getData().subscribe((dataAdmin) =>{
       this.dataAdmin = dataAdmin;
-      this.nombre_Usuario= `${dataAdmin.name} ${dataAdmin.lastNameP} ${dataAdmin.lastNameM}`
     })
   }
 }

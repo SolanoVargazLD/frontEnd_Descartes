@@ -4,14 +4,12 @@ body {
   justify-content: center;
 }
 
-
 .form-container {
   background-color: white;
   width: 80%;
   border-radius: 5px;
   overflow: hidden;
   height: 90vh;
-
   display: flex;
   align-items: center;
 }
@@ -54,7 +52,7 @@ body {
 }
 
 .borderContent{
-  width: 500px;
+  width: 350px;
   height: 35px;
   border: rgb(138, 138, 138) solid;
   border-radius: 7px;
@@ -70,4 +68,3 @@ body {
 .login-container h2{
   padding-bottom:25px;
 }
-
