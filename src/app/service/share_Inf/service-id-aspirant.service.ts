@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aspirant } from 'src/app/interface/aspirant_interface';
+import { Aspirant, putAspirantDTO } from 'src/app/interface/aspirant_interface';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -23,6 +23,12 @@ export class ServiceIdAspirantService {
   }
 
   public getData(): Observable<Aspirant> {
-    return this.http.get<Aspirant>(this.url+ this.idAspirant);
+    return this.http.get<Aspirant>(`${this.url}/${this.idAspirant}`);
+  }
+
+  public putUpdate(id: number,data: any){
+    console.log(`${this.url}/${id}`);
+
+    return this.http.put<Aspirant>(`${this.url}/${id}`, data);
   }
 }
