@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //~  Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   declarations: [],
   imports: [
     CommonModule,
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -53,6 +55,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   exports:[
     MatFormFieldModule,
     MatInputModule,
+    FormsModule,
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,

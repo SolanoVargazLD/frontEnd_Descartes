@@ -31,6 +31,15 @@ export interface Address {
   postal_code: string;
 }
 
+export interface putAspirantDTO extends Omit<Aspirant, 'id'|'fatherTutor'|'address'>{
+  putFatherTutorDTO: [];
+  putAdressDTO: putAdressDTO;
+}
+
+export interface putAdressDTO extends Omit<Address , 'id'>{}
+
+export interface putFatherTutorDTO extends Omit<FatherTutor, 'id'>{}
+
 // export interface Aspirant {
 //   id: number;
 //   name: string;

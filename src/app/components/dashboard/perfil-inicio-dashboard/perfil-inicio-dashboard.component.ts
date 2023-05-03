@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Adminitrastive } from '../../../interface/adminitrastive_interface';
 import { ServiceAdministrativeService } from 'src/app/service/adminitrastive/service-administrative.service';
+import { Adminitrastive } from '../../../interface/adminitrastive_interface';
 
 @Component({
   selector: 'app-perfil-inicio-dashboard',

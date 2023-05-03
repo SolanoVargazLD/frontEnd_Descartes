@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   form: FormGroup;
   loading: boolean = false;
+
   constructor(private formLogin: FormBuilder, private _snackBar: MatSnackBar, private _router: Router){
     this.form = this.formLogin.group({
       user:['', Validators.required],

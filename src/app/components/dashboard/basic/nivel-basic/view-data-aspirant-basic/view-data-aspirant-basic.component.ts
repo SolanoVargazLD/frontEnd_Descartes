@@ -1,16 +1,14 @@
-import {Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Aspirant } from 'src/app/interface/aspirant_interface';
-import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
+import { ServiceIdAspirantService } from '../../../../../service/share_Inf/service-id-aspirant.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-view-aspirant',
-  templateUrl: './view-aspirant.component.html',
-  styleUrls: ['./view-aspirant.component.css']
+  selector: 'app-view-data-aspirant-basic',
+  templateUrl: './view-data-aspirant-basic.component.html',
+  styleUrls: ['./view-data-aspirant-basic.component.css']
 })
-
-export class ViewAspirantComponent implements OnInit{
-
+export class ViewDataAspirantBasicComponent implements OnInit {
   dataAspirant: Aspirant= {
     id: 0,
     name: '',

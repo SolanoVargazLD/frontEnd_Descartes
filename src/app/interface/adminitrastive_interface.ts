@@ -1,4 +1,4 @@
-export interface Adminitrastive{
+export interface Adminitrastive {
   id: number;
   name: string;
   lastNameP: string;

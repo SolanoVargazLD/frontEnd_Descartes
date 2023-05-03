@@ -4,9 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { aspirantNivelBasic } from 'src/app/interface/aspirantBasic_interface';
 import { ServiceIdAspirantService } from '../../../../service/share_Inf/service-id-aspirant.service';
+import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-basic-preescolar',
@@ -60,9 +60,7 @@ export class BasicPreescolarComponent implements OnInit {
   }
 
   clickViewAspirant(id: number){
-    // routerLink="/dashboard/View_Aspirant";
     this.serviceSharedAspirant.setIdAspirant(id);
-    this.router.navigate(["/dashboard/View_Aspirant"],{queryParams:{name: '/dashboard/Preescolar'}});
   }
 
 }
