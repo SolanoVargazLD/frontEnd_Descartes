@@ -8,15 +8,14 @@ import { ServiceAspirantBasicService } from 'src/app/service/aspirantBasic/servi
 import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
 import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/service-tip-search-nivel-basic.service';
 
-
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-view-preescolar',
-  templateUrl: './view-preescolar.component.html',
-  styleUrls: ['./view-preescolar.component.css']
+  selector: 'app-view-secundaria',
+  templateUrl: './view-secundaria.component.html',
+  styleUrls: ['./view-secundaria.component.css']
 })
-export class ViewPreescolarComponent implements OnInit{
+export class ViewSecundariaComponent implements OnInit{
   displayedColumns: string[] = ['Id', 'name', 'lastNameP', 'lastNameM', 'curp', 'operations'];
   dataSource: any;
   dataVacio: boolean = false;
@@ -25,10 +24,9 @@ export class ViewPreescolarComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private serviceAspirantBasicService: ServiceAspirantBasicService,
-    private serviceSharedAspirant: ServiceIdAspirantService,
-    private serviceAspirantService: ServiceAspirantService,
-    private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService,
-    private router: Router) {}
+              private serviceSharedAspirant: ServiceIdAspirantService,
+              private serviceAspirantService: ServiceAspirantService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
@@ -40,20 +38,19 @@ export class ViewPreescolarComponent implements OnInit{
   }
 
   readDataServiceAspirantBasic() {
-
-    this.serviceAspirantBasicService.getDataPreescolar().subscribe(
-      {
-        next: data => {
-          this.dataSource = new MatTableDataSource<aspirantNivelBasic>(data);
-          this.dataSource.paginator = this.paginator;
-          this.dataVacio = (data.length == 0) ? true : false;
-          this.dataTamanio = data.length;
-        },
-        error: error => {
-          console.log("Error: " + error);
-        }
-      });
-      this.tipeBusqueda= 'Preescolar';
+        this.serviceAspirantBasicService.getDataSecundaria().subscribe(
+          {
+            next: data => {
+              this.dataSource = new MatTableDataSource<aspirantNivelBasic>(data);
+              this.dataSource.paginator = this.paginator;
+              this.dataVacio = (data.length == 0) ? true : false;
+              this.dataTamanio = data.length;
+            },
+            error: error => {
+              console.log("Error: " + error);
+            }
+          });
+          this.tipeBusqueda= 'Secundaria';
   }
 
   openDialog(id: number, nombre: string, apP: string, apM: string, curp: string): void {
@@ -74,8 +71,7 @@ export class ViewPreescolarComponent implements OnInit{
             'Aspirante eliminado de la lista',
             'success'
           );
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-            this.router.navigate(['/dashboard/Primaria']));
+
 
         } else {
           Swal.fire(
@@ -89,9 +85,9 @@ export class ViewPreescolarComponent implements OnInit{
     })
   }
 
-  clickViewAspirant(id: number, vista: string) {
+  clickViewAspirant(id: number) {
     this.serviceSharedAspirant.setIdAspirant(id);
-    this.serviceTipSearchNivelBasicService.setTipoNivelBasic(vista);
   }
 
 }
+

@@ -7,9 +7,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard.component';
 import { PerfilInicioDashboardComponent } from './perfil-inicio-dashboard/perfil-inicio-dashboard.component';
 import { FormatAdministratorPipe } from 'src/app/pipes/pipeDashboard/format-administrator.pipe';
-import { ModifyAspirantComponent } from './nivel-educative/nivel-basic/modify-aspirant/modify-aspirant.component';
 import { ViewAspirantComponent } from './nivel-educative/nivel-basic/view-aspirant/view-aspirant.component';
-// import { ViewAspirantComponent } from './nivel-educative/nivel-basic/view-aspirant/view-aspirant.component';
+import { EditAspirantComponent } from './nivel-educative/nivel-basic/edit-aspirant/edit-aspirant.component';
 
 
 @NgModule({
@@ -17,8 +16,8 @@ import { ViewAspirantComponent } from './nivel-educative/nivel-basic/view-aspira
     DashboardComponent,
     PerfilInicioDashboardComponent,
     FormatAdministratorPipe,
-    ModifyAspirantComponent,
-    ViewAspirantComponent
+    ViewAspirantComponent,
+    EditAspirantComponent
   ],
   imports: [
     CommonModule,
