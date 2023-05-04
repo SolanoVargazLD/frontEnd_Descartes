@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Aspirant } from 'src/app/interface/aspirant_interface';
-import { ServiceIdAspirantService } from '../../../../../service/share_Inf/service-id-aspirant.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Aspirant } from 'src/app/interface/aspirant_interface';
+import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
+import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
 
 @Component({
-  selector: 'app-view-data-aspirant-basic',
-  templateUrl: './view-data-aspirant-basic.component.html',
-  styleUrls: ['./view-data-aspirant-basic.component.css']
+  selector: 'app-view-aspirant',
+  templateUrl: './view-aspirant.component.html',
+  styleUrls: ['./view-aspirant.component.css']
 })
-export class ViewDataAspirantBasicComponent implements OnInit {
+export class ViewAspirantComponent implements OnInit {
   dataAspirant: Aspirant= {
     id: 0,
     name: '',
@@ -32,11 +33,12 @@ export class ViewDataAspirantBasicComponent implements OnInit {
 
   rutAnt!: string;
 
-
-  constructor(private serviceSharedAspirant: ServiceIdAspirantService, private router: ActivatedRoute, private routerNav:Router) {}
+  constructor(private serviceAspirantService: ServiceAspirantService,
+              private serviceIdAspirantService: ServiceIdAspirantService,
+              private router: ActivatedRoute
+              , private routerNav:Router) {}
 
   ngOnInit(): void {
-    this.validUndefinedData();
     this.assignValueAspirant();
 
     this.router.queryParams.subscribe(
@@ -44,11 +46,10 @@ export class ViewDataAspirantBasicComponent implements OnInit {
         this.rutAnt= params['name'];
       }
     )
-
   }
 
   assignValueAspirant(){
-    this.serviceSharedAspirant.getData().subscribe(
+    this.serviceAspirantService.getDataId(this.serviceIdAspirantService.getIdAspirant()).subscribe(
         {
           next:data=>{
             this.dataAspirant= data;
@@ -60,13 +61,4 @@ export class ViewDataAspirantBasicComponent implements OnInit {
     );
   }
 
-  validUndefinedData(){
-    if (this.serviceSharedAspirant.getIdAspirant()==0) {
-        this.routerNav.navigate([this.rutAnt]);
-     }
-  }
-
-  regresar(){
-    this.routerNav.navigate([this.rutAnt]);
-  }
 }

@@ -1,19 +1,19 @@
-import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Aspirant } from 'src/app/interface/aspirant_interface';
+import { Aspirant, putAspirantDTO } from 'src/app/interface/aspirant_interface';
+import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
 
 import Swal from 'sweetalert2';
-import { putAspirantDTO } from '../../../../../interface/aspirant_interface';
 
 @Component({
-  selector: 'app-modify-data-aspirant-basic',
-  templateUrl: './modify-data-aspirant-basic.component.html',
-  styleUrls: ['./modify-data-aspirant-basic.component.css']
+  selector: 'app-modify-aspirant',
+  templateUrl: './modify-aspirant.component.html',
+  styleUrls: ['./modify-aspirant.component.css']
 })
-export class ModifyDataAspirantBasicComponent implements OnInit {
+
+export class ModifyAspirantComponent implements OnInit {
   dataAspirant: Aspirant = {
     id: 0,
     name: '',
@@ -34,6 +34,7 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
       postal_code: ''
     }
   };
+
   putAspirant: putAspirantDTO = {
     name: '',
     lastNameP: '',
@@ -43,8 +44,9 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
     conditionS: '',
     tipoAspirant: '',
     sex: '',
-    putFatherTutorDTO: [],
-    putAdressDTO: {
+    fatherTutor: [],
+    address: {
+      id: 0,
       street: '',
       number: '',
       colony: '',
@@ -55,14 +57,16 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
 
   public nombre: string = '';
 
-  constructor(private serviceSharedAspirant: ServiceIdAspirantService, private router: Router) { }
+  constructor(private serviceAspirantService: ServiceAspirantService,
+              private serviceIdAspirantService: ServiceIdAspirantService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.assignValueAspirant();
   }
 
   assignValueAspirant() {
-    this.serviceSharedAspirant.getData().subscribe(
+    this.serviceAspirantService.getDataId(this.serviceIdAspirantService.getIdAspirant()).subscribe(
       {
         next: data => {
           this.dataAspirant = data;
@@ -75,7 +79,6 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
   }
 
   goBack(): void {
-    console.log(this.dataAspirant.fatherTutor.length);
     this.router.navigate(['/dashboard/Preescolar']);
   }
 
@@ -96,7 +99,7 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
       if (result.isConfirmed) {
         // &
 
-        let aspirant = null;
+        let aspirant: putAspirantDTO;
 
         if (this.dataAspirant.fatherTutor.length != 1) {
           aspirant = {
@@ -109,6 +112,7 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
             "sex": form.value.sexAsp != '' ? `${form.value.sexAsp}` : `${this.dataAspirant.sex}`,
             "tipoAspirant": this.dataAspirant.tipoAspirant,
             "address": {
+              "id": this.dataAspirant.address.id,
               "street": form.value.streetAspAdr != '' ? `${form.value.streetAspAdr}` : `${this.dataAspirant.address.street}`,
               "number": form.value.numberAspAdr != '' ? `${form.value.numberAspAdr}` : `${this.dataAspirant.address.number}`,
               "colony": form.value.colonyAspAdr != '' ? `${form.value.colonyAspAdr}` : `${this.dataAspirant.address.colony}`,
@@ -117,6 +121,7 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
             },
             "fatherTutor": [
               {
+                "id": this.dataAspirant.fatherTutor[0].id,
                 "name": form.value.NameFather0 != '' ? `${form.value.NameFather0}` : `${this.dataAspirant.fatherTutor[0].name}`,
                 "lastNameP": form.value.lastNamePFather0 != '' ? `${form.value.lastNamePFather0}` : `${this.dataAspirant.fatherTutor[0].lastNameP}`,
                 "lastNameM": form.value.lastNameMFather0 != '' ? `${form.value.lastNameMFather1}` : `${this.dataAspirant.fatherTutor[0].lastNameM}`,
@@ -125,6 +130,7 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
                 "email": form.value.emailFather0 != '' ? `${form.value.emailFather0}` : `${this.dataAspirant.fatherTutor[0].email}`
               },
               {
+                "id": this.dataAspirant.fatherTutor[1].id,
                 "name": form.value.NameFather1 != '' ? `${form.value.NameFather1}` : `${this.dataAspirant.fatherTutor[1].name}`,
                 "lastNameP": form.value.lastNamePFather1 != '' ? `${form.value.lastNamePFather1}` : `${this.dataAspirant.fatherTutor[1].lastNameP}`,
                 "lastNameM": form.value.lastNameMFather1 != '' ? `${form.value.streetAspAdr}` : `${this.dataAspirant.fatherTutor[1].lastNameM}`,
@@ -143,8 +149,9 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
             "bloodType": form.value.tSangreAsp != '' ? `${form.value.tSangreAsp}` : `${this.dataAspirant.bloodType}`,
             "conditionS": form.value.conditAsp != '' ? `${form.value.conditAsp}` : `${this.dataAspirant.conditionS}`,
             "sex": form.value.sexAsp != '' ? `${form.value.sexAsp}` : `${this.dataAspirant.sex}`,
-            "tipoAspirant":  this.dataAspirant.tipoAspirant,
+            "tipoAspirant": this.dataAspirant.tipoAspirant,
             "address": {
+              "id": this.dataAspirant.address.id,
               "street": form.value.streetAspAdr != '' ? `${form.value.streetAspAdr}` : `${this.dataAspirant.address.street}`,
               "number": form.value.numberAspAdr != '' ? `${form.value.numberAspAdr}` : `${this.dataAspirant.address.number}`,
               "colony": form.value.colonyAspAdr != '' ? `${form.value.colonyAspAdr}` : `${this.dataAspirant.address.colony}`,
@@ -153,6 +160,7 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
             },
             "fatherTutor": [
               {
+                "id": this.dataAspirant.fatherTutor[0].id,
                 "name": form.value.NameFather0 != '' ? `${form.value.NameFather0}` : `${this.dataAspirant.fatherTutor[0].name}`,
                 "lastNameP": form.value.lastNamePFather0 != '' ? `${form.value.lastNamePFather0}` : `${this.dataAspirant.fatherTutor[0].lastNameP}`,
                 "lastNameM": form.value.lastNameMFather0 != '' ? `${form.value.lastNameMFather1}` : `${this.dataAspirant.fatherTutor[0].lastNameM}`,
@@ -163,19 +171,20 @@ export class ModifyDataAspirantBasicComponent implements OnInit {
             ]
           };
         };
-        console.log("post");
-        console.log(aspirant);
-        console.log(this.dataAspirant.id);
-        this.serviceSharedAspirant.putUpdate(this.dataAspirant.id, aspirant).subscribe;
-
+        this.serviceAspirantService.putUpdate(this.serviceIdAspirantService.getIdAspirant(), aspirant).subscribe(
+          data => {
+            this.router.navigateByUrl('/dashboard/Preescolar', { skipLocationChange: true });
+          }
+        )
         // &
         Swal.fire(
           'Modificado',
           'Aspirante Modificado de la lista',
           'success'
         )
+      } else {
+        this.router.navigate(['/dashboard/Preescolar']);
       }
-      this.router.navigate(['/dashboard/Preescolar']);
     })
   }
 }

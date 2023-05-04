@@ -29,13 +29,13 @@
             Basico
           </mat-expansion-panel-header>
           <mat-nav-list>
-            <a mat-list-item routerLink="Preescolar">
+            <a mat-list-item routerLink="NivelPreescolar">
               <mat-icon>menu_book</mat-icon>&nbsp;<span>Preescolar</span>
             </a>
-            <a mat-list-item routerLink="components2">
+            <a mat-list-item routerLink="NivelPrimaria">
               <mat-icon>local_library</mat-icon>&nbsp;<span>Primaria</span>
             </a>
-            <a mat-list-item routerLink="#">
+            <a mat-list-item (click)="busquedaNivel('Secundaria')">
               <mat-icon>style</mat-icon>&nbsp;<span>Secundaria</span>
             </a>
           </mat-nav-list>

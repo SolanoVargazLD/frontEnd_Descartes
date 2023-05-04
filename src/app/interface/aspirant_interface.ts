@@ -8,11 +8,11 @@ export interface Aspirant {
   conditionS: string;
   sex: string;
   tipoAspirant:string;
-  fatherTutor: FatherTutor[];
-  address: Address;
+  fatherTutor: FatherTutorInt[];
+  address: AddressInt;
 }
 
-export interface FatherTutor {
+export interface FatherTutorInt {
   id: number;
   name: string;
   lastNameP: string;
@@ -22,7 +22,7 @@ export interface FatherTutor {
   email: string;
 }
 
-export interface Address {
+export interface AddressInt {
   id: number;
   street: string;
   number: string;
@@ -32,71 +32,7 @@ export interface Address {
 }
 
 export interface putAspirantDTO extends Omit<Aspirant, 'id'|'fatherTutor'|'address'>{
-  putFatherTutorDTO: [];
-  putAdressDTO: putAdressDTO;
+  fatherTutor: FatherTutorInt[];
+  address: AddressInt;
 }
-
-export interface putAdressDTO extends Omit<Address , 'id'>{}
-
-export interface putFatherTutorDTO extends Omit<FatherTutor, 'id'>{}
-
-// export interface Aspirant {
-//   id: number;
-//   name: string;
-//   lastNameP: string;
-//   lastNameM: string;
-//   curp: string;
-//   bloodType: string;
-//   conditionS: string;
-//   sex: string;
-//   fatherTutor: {
-//     id: number;
-//     name: string;
-//     lastNameP: string;
-//     lastNameM: string;
-//     phone1: string;
-//     phone2: string;
-//     email: string;
-//   }[];
-//   address: {
-//     id: number;
-//     street: string;
-//     number: string;
-//     colony: string;
-//     municipality: string;
-//     postal_code: string;
-//   };
-// }
-
-// export interface Aspirant {
-//   id: number;
-//   name: string;
-//   lastNameP: string;
-//   lastNameM: string;
-//   curp: string;
-//   bloodType: string;
-//   conditionS: string;
-//   sex: string;
-//   fatherTutor: FatherTutor[];
-//   address: Address;
-// }
-// export interface FatherTutor {
-//   id: number;
-//   name: string;
-//   lastNameP: string;
-//   lastNameM: string;
-//   phone1: string;
-//   phone2: string;
-//   email: string;
-// }
-
-// export interface Address {
-//   id: number;
-//   street: string;
-//   number: string;
-//   colony: string;
-//   municipality: string;
-//   postal_code: string;
-// }
-
 

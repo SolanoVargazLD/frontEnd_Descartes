@@ -1,5 +1,3 @@
-
-
 .container {
   display: flex; /* Utilizamos flexbox para centrar verticalmente el div interior */
   align-items: center; /* Centramos verticalmente el div interior */

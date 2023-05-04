@@ -7,8 +7,8 @@ import { Adminitrastive } from '../../../interface/adminitrastive_interface';
   templateUrl: './perfil-inicio-dashboard.component.html',
   styleUrls: ['./perfil-inicio-dashboard.component.css']
 })
-export class PerfilInicioDashboardComponent implements OnInit{
-  adminitrastive: Adminitrastive= {
+export class PerfilInicioDashboardComponent implements OnInit {
+  adminitrastive: Adminitrastive = {
     id: 0,
     name: '',
     lastNameP: '',
@@ -18,22 +18,22 @@ export class PerfilInicioDashboardComponent implements OnInit{
     // password: ''
   };
 
-  constructor(private serviceAdministrativeService: ServiceAdministrativeService){}
+  constructor(private serviceAdministrativeService: ServiceAdministrativeService) { }
 
   ngOnInit(): void {
     this.assignValueAdminitrastive();
   }
 
-  assignValueAdminitrastive(){
+  assignValueAdminitrastive() {
     this.serviceAdministrativeService.getData().subscribe(
-        {
-          next:data=>{
-            this.adminitrastive= data;
-          },
-          error:error =>{
-            console.log("Error: "+error);
-          }
+      {
+        next: data => {
+          this.adminitrastive = data;
+        },
+        error: error => {
+          console.log("Error: " + error);
         }
+      }
     );
   }
 

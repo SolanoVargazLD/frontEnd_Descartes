@@ -9,11 +9,19 @@ import { aspirantNivelBasic } from '../../interface/aspirantBasic_interface';
 })
 export class ServiceAspirantBasicService {
 
-  private url: string= environment._apiURL+'aspirantBasic/crud';
+  private url: string= environment._apiURL;
 
   constructor(private http: HttpClient) { }
 
-  public getData(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(this.url);
+  public getDataPreescolar(): Observable<aspirantNivelBasic[]> {
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPreescolar`);
+  }
+
+  public getDataPrimaria(): Observable<aspirantNivelBasic[]> {
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPrimaria`);
+  }
+
+  public getDataSecundaria(): Observable<aspirantNivelBasic[]> {
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listSecundaria`);
   }
 }
