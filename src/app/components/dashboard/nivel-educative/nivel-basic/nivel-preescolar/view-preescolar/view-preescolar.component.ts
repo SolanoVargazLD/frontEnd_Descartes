@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { aspirantNivelBasic } from 'src/app/interface/aspirantBasic_interface';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceAspirantBasicService } from 'src/app/service/aspirantBasic/service-aspirant-basic.service';
@@ -16,13 +17,14 @@ import Swal from 'sweetalert2';
   templateUrl: './view-preescolar.component.html',
   styleUrls: ['./view-preescolar.component.css']
 })
-export class ViewPreescolarComponent implements OnInit{
+export class ViewPreescolarComponent implements OnInit, OnDestroy{
   displayedColumns: string[] = ['Id', 'name', 'lastNameP', 'lastNameM', 'curp', 'operations'];
   dataSource: any;
   dataVacio: boolean = false;
   dataTamanio: number = 0;
   tipeBusqueda: string= '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  suscription: Subscription;
 
   constructor(private serviceAspirantBasicService: ServiceAspirantBasicService,
     private serviceSharedAspirant: ServiceIdAspirantService,
@@ -32,6 +34,13 @@ export class ViewPreescolarComponent implements OnInit{
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
+    this.suscription= this.serviceAspirantBasicService.refresh$.subscribe(()=>{
+      this.readDataServiceAspirantBasic();
+    });
+  }
+
+  ngOnDestroy(): void{
+    this.suscription.unsubscribe();
   }
 
   applyFilter(event: Event) {
@@ -74,19 +83,15 @@ export class ViewPreescolarComponent implements OnInit{
             'Aspirante eliminado de la lista',
             'success'
           );
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-            this.router.navigate(['/dashboard/Primaria']));
-
         } else {
           Swal.fire(
             'Fallo',
             'Aspirante no eliminado, revisar informacion.',
             'question'
           );
-        }
-
+        };
       }
-    })
+    });
   }
 
   clickViewAspirant(id: number, vista: string) {

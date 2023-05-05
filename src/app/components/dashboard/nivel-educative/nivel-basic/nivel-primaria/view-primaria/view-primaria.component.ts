@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { aspirantNivelBasic } from 'src/app/interface/aspirantBasic_interface';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceAspirantBasicService } from 'src/app/service/aspirantBasic/service-aspirant-basic.service';
@@ -15,22 +16,30 @@ import Swal from 'sweetalert2';
   templateUrl: './view-primaria.component.html',
   styleUrls: ['./view-primaria.component.css']
 })
-export class ViewPrimariaComponent implements OnInit{
+export class ViewPrimariaComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['Id', 'name', 'lastNameP', 'lastNameM', 'curp', 'operations'];
   dataSource: any;
   dataVacio: boolean = false;
   dataTamanio: number = 0;
-  tipeBusqueda: string= '';
+  tipeBusqueda: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  suscription: Subscription;
 
   constructor(private serviceAspirantBasicService: ServiceAspirantBasicService,
-              private serviceSharedAspirant: ServiceIdAspirantService,
-              private serviceAspirantService: ServiceAspirantService,
-              private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService,
-              private router: Router) {}
+    private serviceSharedAspirant: ServiceIdAspirantService,
+    private serviceAspirantService: ServiceAspirantService,
+    private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
+    this.suscription = this.serviceAspirantBasicService.refresh$.subscribe(() => {
+      this.readDataServiceAspirantBasic();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe();
   }
 
   applyFilter(event: Event) {
@@ -39,19 +48,19 @@ export class ViewPrimariaComponent implements OnInit{
   }
 
   readDataServiceAspirantBasic() {
-        this.serviceAspirantBasicService.getDataPrimaria().subscribe(
-          {
-            next: data => {
-              this.dataSource = new MatTableDataSource<aspirantNivelBasic>(data);
-              this.dataSource.paginator = this.paginator;
-              this.dataVacio = (data.length == 0) ? true : false;
-              this.dataTamanio = data.length;
-            },
-            error: error => {
-              console.log("Error: " + error);
-            }
-          });
-          this.tipeBusqueda= 'Primaria';
+    this.serviceAspirantBasicService.getDataPrimaria().subscribe(
+      {
+        next: data => {
+          this.dataSource = new MatTableDataSource<aspirantNivelBasic>(data);
+          this.dataSource.paginator = this.paginator;
+          this.dataVacio = (data.length == 0) ? true : false;
+          this.dataTamanio = data.length;
+        },
+        error: error => {
+          console.log("Error: " + error);
+        }
+      });
+    this.tipeBusqueda = 'Primaria';
   }
 
   openDialog(id: number, nombre: string, apP: string, apM: string, curp: string): void {
@@ -72,9 +81,6 @@ export class ViewPrimariaComponent implements OnInit{
             'Aspirante eliminado de la lista',
             'success'
           );
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-            this.router.navigate(['/dashboard/Primaria']));
-
         } else {
           Swal.fire(
             'Fallo',
@@ -82,13 +88,13 @@ export class ViewPrimariaComponent implements OnInit{
             'question'
           );
         }
-
       }
-    })
+    });
   }
 
-  clickViewAspirant(id: number) {
+  clickViewAspirant(id: number, vista: string) {
     this.serviceSharedAspirant.setIdAspirant(id);
+    this.serviceTipSearchNivelBasicService.setTipoNivelBasic(vista);
   }
 
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Aspirant } from 'src/app/interface/aspirant_interface';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
+import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/service-tip-search-nivel-basic.service';
 
 @Component({
   selector: 'app-view-aspirant',
@@ -35,8 +36,9 @@ export class ViewAspirantComponent implements OnInit {
 
   constructor(private serviceAspirantService: ServiceAspirantService,
               private serviceIdAspirantService: ServiceIdAspirantService,
-              private router: ActivatedRoute
-              , private routerNav:Router) {}
+              private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService,
+              private router: ActivatedRoute,
+              private routerNav:Router) {}
 
   ngOnInit(): void {
     this.assignValueAspirant();
@@ -61,4 +63,7 @@ export class ViewAspirantComponent implements OnInit {
     );
   }
 
+  goBack(): void {
+    this.routerNav.navigate([`/dashboard/Nivel${this.serviceTipSearchNivelBasicService.getTipoNivelBasic()}`]);
+  }
 }
