@@ -63,6 +63,9 @@ export class EditAspirantComponent implements OnInit {
     private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService) { }
 
   ngOnInit(): void {
+    if(this.serviceIdAspirantService.getIdAspirant()==0){
+      this.router.navigateByUrl(`/dashboard/Nivel${this.serviceTipSearchNivelBasicService.getTipoNivelBasic()}`, { skipLocationChange: true });
+    }
     this.assignValueAspirant();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Aspirant } from 'src/app/interface/aspirant_interface';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
@@ -37,17 +37,13 @@ export class ViewAspirantComponent implements OnInit {
   constructor(private serviceAspirantService: ServiceAspirantService,
               private serviceIdAspirantService: ServiceIdAspirantService,
               private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService,
-              private router: ActivatedRoute,
-              private routerNav:Router) {}
+              private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {if(
+    this.serviceIdAspirantService.getIdAspirant()==0){
+      this.router.navigateByUrl(`/dashboard/Nivel${this.serviceTipSearchNivelBasicService.getTipoNivelBasic()}`, { skipLocationChange: true });
+    }
     this.assignValueAspirant();
-
-    this.router.queryParams.subscribe(
-      (params: Params)=>{
-        this.rutAnt= params['name'];
-      }
-    )
   }
 
   assignValueAspirant(){
@@ -64,6 +60,6 @@ export class ViewAspirantComponent implements OnInit {
   }
 
   goBack(): void {
-    this.routerNav.navigate([`/dashboard/Nivel${this.serviceTipSearchNivelBasicService.getTipoNivelBasic()}`]);
+    this.router.navigate([`/dashboard/Nivel${this.serviceTipSearchNivelBasicService.getTipoNivelBasic()}`]);
   }
 }

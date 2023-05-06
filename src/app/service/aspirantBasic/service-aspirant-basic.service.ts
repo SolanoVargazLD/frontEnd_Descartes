@@ -9,23 +9,18 @@ import { tap } from 'rxjs/operators';
 })
 export class ServiceAspirantBasicService {
   private url: string = environment._apiURL;
-  private _refresh$ = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
-  get refresh$() {
-    return this._refresh$;
-  }
-
   public getDataPreescolar(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPreescolar`).pipe(tap(() => { this._refresh$.next(); }));
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPreescolar`);
   }
 
   public getDataPrimaria(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPrimaria`).pipe(tap(() => { this._refresh$.next(); }));
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPrimaria`);
   }
 
   public getDataSecundaria(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listSecundaria`).pipe(tap(() => { this._refresh$.next(); }));
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listSecundaria`);
   }
 }

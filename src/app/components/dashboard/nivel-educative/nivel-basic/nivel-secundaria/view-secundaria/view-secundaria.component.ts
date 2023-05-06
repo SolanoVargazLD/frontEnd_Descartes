@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   templateUrl: './view-secundaria.component.html',
   styleUrls: ['./view-secundaria.component.css']
 })
-export class ViewSecundariaComponent implements OnInit, OnDestroy {
+export class ViewSecundariaComponent implements OnInit{
   displayedColumns: string[] = ['Id', 'name', 'lastNameP', 'lastNameM', 'curp', 'operations'];
   dataSource: any;
   dataVacio: boolean = false;
@@ -33,13 +33,6 @@ export class ViewSecundariaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
-    this.suscription = this.serviceAspirantBasicService.refresh$.subscribe(() => {
-      this.readDataServiceAspirantBasic();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.suscription.unsubscribe();
   }
 
   applyFilter(event: Event) {
@@ -80,7 +73,9 @@ export class ViewSecundariaComponent implements OnInit, OnDestroy {
             'Eliminado',
             'Aspirante eliminado de la lista',
             'success'
-          );
+          ).then((result)=>{
+            this.reload();
+          })
         } else {
           Swal.fire(
             'Fallo',
@@ -90,6 +85,10 @@ export class ViewSecundariaComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  reload():void{
+    window.location.reload();
   }
 
   clickViewAspirant(id: number, vista: string) {
