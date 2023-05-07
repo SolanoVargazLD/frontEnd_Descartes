@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ServiceAspirantBachillerateService } from 'src/app/service/aspirantBachillerate/service-aspirant-bachillerate.service';
+import { ServiceAspirantBachillerateService } from 'src/app/service/aspirantBachillerate/viewData_aspirantB/service-aspirant-bachillerate.service';
 
 import Swal from 'sweetalert2';
-import { aspirantNivelUpper } from '../../../../../interface/aspirantBachillerate_interface';
+import { AspirantNivelUpper } from '../../../../../interface/aspirantBachillerate_interface';
 import { ServiceIdBachillerAspirantService } from 'src/app/service/share_Inf/media/service-id-bachiller-aspirant.service';
 
 @Component({
@@ -37,7 +37,7 @@ export class ViewBachilleratoComponent implements OnInit {
     this.serviceAspirantBachillerateService.getDataBachillerate().subscribe(
       {
         next: data => {
-          this.dataSource = new MatTableDataSource<aspirantNivelUpper>(data);
+          this.dataSource = new MatTableDataSource<AspirantNivelUpper>(data);
           this.dataSource.paginator = this.paginator;
           this.dataVacio = (data.length == 0) ? true : false;
           this.dataTamanio = data.length;
@@ -90,6 +90,8 @@ export class ViewBachilleratoComponent implements OnInit {
   clickViewAspirant(id: number, id_b: number) {
     this.serviceIdBachillerAspirantService.setIdAspirant(id);
     this.serviceIdBachillerAspirantService.setIdAspirantBachiller(id_b);
+    console.log("id: "+id);
+    console.log("id_B: "+id_b);
   }
 
 }

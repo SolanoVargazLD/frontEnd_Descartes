@@ -7,6 +7,7 @@ import { ServiceIdAspirantService } from 'src/app/service/share_Inf/basic/servic
 import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/basic/service-tip-search-nivel-basic.service';
 
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-edit-aspirant',
   templateUrl: './edit-aspirant.component.html',

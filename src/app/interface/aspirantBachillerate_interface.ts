@@ -1,4 +1,4 @@
-export interface aspirantNivelUpper{
+export interface AspirantNivelUpper{
   id_asp: number;
   id_bachillerate: number;
   name: string;
@@ -7,3 +7,4 @@ export interface aspirantNivelUpper{
   curp: string;
   tip_asp: string;
 }
+

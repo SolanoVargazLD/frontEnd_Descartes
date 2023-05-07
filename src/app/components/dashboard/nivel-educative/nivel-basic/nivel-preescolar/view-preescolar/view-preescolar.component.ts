@@ -42,7 +42,6 @@ export class ViewPreescolarComponent implements OnInit{
   }
 
   readDataServiceAspirantBasic() {
-
     this.serviceAspirantBasicService.getDataPreescolar().subscribe(
       {
         next: data => {
