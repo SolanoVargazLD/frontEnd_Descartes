@@ -49,6 +49,9 @@ export interface AddressInt {
   postal_code: string;
 }
 
+export interface AspirantBachillerateDAO extends Omit<AspirantBachillerate, 'id'>{
+}
+
 // export interface putAspirantDTO extends Omit<Aspirant, 'id'|'fatherTutor'|'address'>{
 //   fatherTutor: FatherTutorInt[];
 //   address: AddressInt;

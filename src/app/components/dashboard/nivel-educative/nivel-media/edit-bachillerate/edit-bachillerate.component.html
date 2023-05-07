@@ -9,45 +9,61 @@
     <table class="example-full-width" cellspacing="20">
       <mat-form-field class="example-full-width">
         <mat-label>Id Aspirante</mat-label>
-        <input matInput disabled value="{{dataAspirant.id}}{{dataAspirant.tipoAspirant}}">
+        <input matInput disabled value="{{dataAspirantBachillerate.id}}{{dataAspirantBachillerate.aspirant.tipoAspirant}}">
       </mat-form-field>
       <tr>
         <td><mat-form-field class="example-full-width">
             <mat-label>Nombre</mat-label>
-            <input matInput name="nameAsp" [(ngModel)]="dataAspirant.name">
+            <input matInput name="nameAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.name">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>Apellido Paterno</mat-label>
-            <input matInput name="lastNamePAsp" [(ngModel)]="dataAspirant.lastNameP">
+            <input matInput name="lastNamePAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.lastNameP">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>Apellido Materno</mat-label>
-            <input matInput name="lastNameMAsp" [(ngModel)]="dataAspirant.lastNameM">
+            <input matInput name="lastNameMAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.lastNameM">
           </mat-form-field></td>
       </tr>
       <tr>
         <td><mat-form-field class="example-full-width">
             <mat-label>Curp</mat-label>
-            <input matInput name="curpAsp" [(ngModel)]="dataAspirant.curp">
+            <input matInput name="curpAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.curp">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>sex</mat-label>
-            <input matInput name="sexAsp" [(ngModel)]="dataAspirant.sex">
+            <input matInput name="sexAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.sex">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>Tipo Sangre</mat-label>
-            <input matInput name="tSangreAsp" [(ngModel)]="dataAspirant.bloodType">
+            <input matInput name="tSangreAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.bloodType">
+          </mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="example-full-width">
+            <mat-label>Escuela de Origen</mat-label>
+            <input matInput name="schoolOriginAspirantBachillerate" [(ngModel)]="dataAspirantBachillerate.schoolOrigin">
+          </mat-form-field></td>
+
+        <td><mat-form-field class="example-full-width">
+            <mat-label>Telefono</mat-label>
+            <input matInput name="phoneAspirantBachillerate" [(ngModel)]="dataAspirantBachillerate.phone">
+          </mat-form-field></td>
+
+        <td><mat-form-field class="example-full-width">
+            <mat-label>Correo Electronico</mat-label>
+            <input matInput name="emailAspirantBachillerate" [(ngModel)]="dataAspirantBachillerate.email">
           </mat-form-field></td>
       </tr>
     </table>
 
     <mat-form-field class="example-full-width">
       <mat-label>Condici&oacute;n Medica</mat-label>
-      <input matInput name="conditAsp" [(ngModel)]="dataAspirant.conditionS">
+      <input matInput name="conditAsp" [(ngModel)]="dataAspirantBachillerate.aspirant.conditionS">
     </mat-form-field>
 
     <!--& _________________________________Direccion _______________________________ -->
@@ -59,28 +75,28 @@
       <tr>
         <td><mat-form-field class="example-full-width">
             <mat-label>N&uacute;mero</mat-label>
-            <input matInput name="numberAspAdr" [(ngModel)]="dataAspirant.address.number">
+            <input matInput name="numberAspAdr" [(ngModel)]="dataAspirantBachillerate.aspirant.address.number">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>Calle</mat-label>
-            <input matInput name="streetAspAdr" [(ngModel)]="dataAspirant.address.street">
+            <input matInput name="streetAspAdr" [(ngModel)]="dataAspirantBachillerate.aspirant.address.street">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>Colonia</mat-label>
-            <input matInput name="colonyAspAdr" [(ngModel)]="dataAspirant.address.colony">
+            <input matInput name="colonyAspAdr" [(ngModel)]="dataAspirantBachillerate.aspirant.address.colony">
           </mat-form-field></td>
       </tr>
       <tr>
         <td><mat-form-field class="example-full-width">
             <mat-label>Municipio</mat-label>
-            <input matInput name="municipalyAspAdr" [(ngModel)]="dataAspirant.address.municipality">
+            <input matInput name="municipalyAspAdr" [(ngModel)]="dataAspirantBachillerate.aspirant.address.municipality">
           </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width">
             <mat-label>Postal Code</mat-label>
-            <input matInput name="postalAspAdr" ngModel  #postalCode maxlength="5" placeholder="XXXXX" value="{{dataAspirant.address.postal_code}}">
+            <input matInput name="postalAspAdr" ngModel  #postalCode maxlength="5" placeholder="XXXXX" value="{{dataAspirantBachillerate.aspirant.address.postal_code}}">
             <mat-hint align="end">{{postalCode.value.length}}  / 5</mat-hint>
           </mat-form-field></td>
       </tr>
@@ -90,9 +106,9 @@
     <div class="containerSeparator">
       <h1 class="separador-texto">Informaci&oacute;n de Padre(s) o Tutor(es)</h1>
     </div>
-    <div *ngFor="let fatherTutor of dataAspirant.fatherTutor, let i= index ">
+    <div *ngFor="let fatherTutor of dataAspirantBachillerate.aspirant.fatherTutor, let i= index ">
       <div class="containerSeparator">
-        <h1 class="separador-texto-padre">Informaci&oacute;n {{i}}</h1>
+        <h1 class="separador-texto-padre">Informaci&oacute;n {{i+1}}</h1>
       </div>
       <table class="example-full-width" cellspacing="20">
         <tr>

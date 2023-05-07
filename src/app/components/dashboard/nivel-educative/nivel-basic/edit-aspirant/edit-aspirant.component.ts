@@ -122,7 +122,7 @@ export class EditAspirantComponent implements OnInit {
                 "id": this.dataAspirant.fatherTutor[0].id,
                 "name": form.value.NameFather0 != '' ? `${form.value.NameFather0}` : `${this.dataAspirant.fatherTutor[0].name}`,
                 "lastNameP": form.value.lastNamePFather0 != '' ? `${form.value.lastNamePFather0}` : `${this.dataAspirant.fatherTutor[0].lastNameP}`,
-                "lastNameM": form.value.lastNameMFather0 != '' ? `${form.value.lastNameMFather1}` : `${this.dataAspirant.fatherTutor[0].lastNameM}`,
+                "lastNameM": form.value.lastNameMFather0 != '' ? `${form.value.lastNameMFather0}` : `${this.dataAspirant.fatherTutor[0].lastNameM}`,
                 "phone1": form.value.phone1Father0 != '' ? `${form.value.phone1Father0}` : `${this.dataAspirant.fatherTutor[0].phone1}`,
                 "phone2": form.value.phone2Father0 != '' ? `${form.value.phone2Father0}` : `${this.dataAspirant.fatherTutor[0].phone2}`,
                 "email": form.value.emailFather0 != '' ? `${form.value.emailFather0}` : `${this.dataAspirant.fatherTutor[0].email}`
@@ -131,7 +131,7 @@ export class EditAspirantComponent implements OnInit {
                 "id": this.dataAspirant.fatherTutor[1].id,
                 "name": form.value.NameFather1 != '' ? `${form.value.NameFather1}` : `${this.dataAspirant.fatherTutor[1].name}`,
                 "lastNameP": form.value.lastNamePFather1 != '' ? `${form.value.lastNamePFather1}` : `${this.dataAspirant.fatherTutor[1].lastNameP}`,
-                "lastNameM": form.value.lastNameMFather1 != '' ? `${form.value.streetAspAdr}` : `${this.dataAspirant.fatherTutor[1].lastNameM}`,
+                "lastNameM": form.value.lastNameMFather1 != '' ? `${form.value.lastNameMFather1}` : `${this.dataAspirant.fatherTutor[1].lastNameM}`,
                 "phone1": form.value.phone1Father1 != '' ? `${form.value.phone1Father1}` : `${this.dataAspirant.fatherTutor[1].phone1}`,
                 "phone2": form.value.phone2Father1 != '' ? `${form.value.phone2Father1}` : `${this.dataAspirant.fatherTutor[1].phone2}`,
                 "email": form.value.emailFather1 != '' ? `${form.value.emailFather1}` : `${this.dataAspirant.fatherTutor[1].email}`
@@ -161,11 +161,11 @@ export class EditAspirantComponent implements OnInit {
                 "id": this.dataAspirant.fatherTutor[0].id,
                 "name": form.value.NameFather0 != '' ? `${form.value.NameFather0}` : `${this.dataAspirant.fatherTutor[0].name}`,
                 "lastNameP": form.value.lastNamePFather0 != '' ? `${form.value.lastNamePFather0}` : `${this.dataAspirant.fatherTutor[0].lastNameP}`,
-                "lastNameM": form.value.lastNameMFather0 != '' ? `${form.value.lastNameMFather1}` : `${this.dataAspirant.fatherTutor[0].lastNameM}`,
+                "lastNameM": form.value.lastNameMFather0 != '' ? `${form.value.lastNameMFather0}` : `${this.dataAspirant.fatherTutor[0].lastNameM}`,
                 "phone1": form.value.phone1Father0 != '' ? `${form.value.phone1Father0}` : `${this.dataAspirant.fatherTutor[0].phone1}`,
                 "phone2": form.value.phone2Father0 != '' ? `${form.value.phone2Father0}` : `${this.dataAspirant.fatherTutor[0].phone2}`,
                 "email": form.value.emailFather0 != '' ? `${form.value.emailFather0}` : `${this.dataAspirant.fatherTutor[0].email}`
-              }
+              },
             ]
           };
         };
