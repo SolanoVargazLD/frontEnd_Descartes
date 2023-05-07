@@ -6,6 +6,7 @@ import { NivelMediaComponent } from './nivel-media.component';
 import { ViewBachilleratoComponent } from './view-bachillerato/view-bachillerato.component';
 import { EditBachillerateComponent } from './edit-bachillerate/edit-bachillerate.component';
 import { ViewAspirantBachillerateComponent } from './view-aspirant-bachillerate/view-aspirant-bachillerate.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ViewAspirantBachillerateComponent } from './view-aspirant-bachillerate/
   ],
   imports: [
     CommonModule,
-    NivelMediaRoutingModule
+    NivelMediaRoutingModule,
+    SharedModule
   ]
 })
 export class NivelMediaModule { }

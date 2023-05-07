@@ -10,6 +10,7 @@ const routes: Routes = [
     {path:'NivelPreescolar',loadChildren: ()=> import('./nivel-educative/nivel-basic/nivel-preescolar/nivel-preescolar.module').then(x=> x.NivelPreescolarModule)},
     {path:'NivelPrimaria',loadChildren: ()=> import('./nivel-educative/nivel-basic/nivel-primaria/nivel-primaria.module').then(x=> x.NivelPrimariaModule)},
     {path:'NivelSecundaria',loadChildren: ()=> import('./nivel-educative/nivel-basic/nivel-secundaria/nivel-secundaria.module').then(x=> x.NivelSecundariaModule)},
+    {path:'NivelBachillerate',loadChildren: ()=> import('./nivel-educative/nivel-media/nivel-media.module').then(x=> x.NivelMediaModule)},
     {path: '**', redirectTo:'PerfilInicio', pathMatch:'full'}
   ]}
 ];

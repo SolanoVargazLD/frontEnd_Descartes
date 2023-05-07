@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs';
 import { aspirantNivelBasic } from 'src/app/interface/aspirantBasic_interface';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceAspirantBasicService } from 'src/app/service/aspirantBasic/service-aspirant-basic.service';
-import { ServiceIdAspirantService } from 'src/app/service/share_Inf/service-id-aspirant.service';
-import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/service-tip-search-nivel-basic.service';
+import { ServiceIdAspirantService } from 'src/app/service/share_Inf/basic/service-id-aspirant.service';
+import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/basic/service-tip-search-nivel-basic.service';
 
 import Swal from 'sweetalert2';
 

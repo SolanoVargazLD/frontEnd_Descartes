@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ServiceAdministrativeService } from 'src/app/service/adminitrastive/service-administrative.service';
 import { Adminitrastive } from 'src/app/interface/adminitrastive_interface';
-import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/service-tip-search-nivel-basic.service';
+import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/basic/service-tip-search-nivel-basic.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -49,7 +49,6 @@ export class DashboardComponent implements OnChanges{
   busquedaNivel(nivel: string){
     this.serviceTipSearchNivelBasicService.setTipoNivelBasic(nivel);
     this.router.navigate(['/dashboard/NivelBasic']);
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
