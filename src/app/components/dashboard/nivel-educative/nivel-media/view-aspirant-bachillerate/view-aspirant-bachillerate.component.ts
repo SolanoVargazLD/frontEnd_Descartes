@@ -44,7 +44,7 @@ export class ViewAspirantBachillerateComponent implements OnInit {
     }
   };
 
-  constructor(private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,              
+  constructor(private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,
               private serviceViewAspirantBachillerateService: ServiceViewAspirantBachillerateService,
               private router: Router) {}
 

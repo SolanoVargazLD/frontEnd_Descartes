@@ -2,7 +2,9 @@ import { ServiceIdBachillerAspirantService } from './../../../../../service/shar
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { putAspirantDTO } from 'src/app/interface/aspirant_interface';
 import { AspirantBachillerate, AspirantBachillerateDAO } from 'src/app/interface/aspirantbachillerate_view_interface';
+import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceViewAspirantBachillerateService } from 'src/app/service/aspirantBachillerate/viewAspirantBachillerate/service-view-aspirant-bachillerate.service';
 
 import Swal from 'sweetalert2';
@@ -50,37 +52,12 @@ export class EditBachillerateComponent implements OnInit {
     schoolOrigin: "",
     phone: "",
     email: "",
-    aspirant: {
-      id: 0,
-      name: "",
-      lastNameP: "",
-      lastNameM: "",
-      curp: "",
-      bloodType: "",
-      conditionS: "",
-      sex: "",
-      tipoAspirant: "",
-      fatherTutor: [],
-      address: {
-        id: 0,
-        street: "",
-        number: "",
-        colony: "",
-        municipality: "",
-        postal_code: ""
-      }
-    },
-    levelUpperMiddle: {
-      id: 0,
-      name: "",
-      level: "",
-      img: ""
-    }
   };
 
   constructor(
     private serviceViewAspirantBachillerateService : ServiceViewAspirantBachillerateService,
     private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,
+    private serviceAspirantService: ServiceAspirantService,
     private router: Router,){}
 
   ngOnInit(): void {
@@ -118,14 +95,15 @@ export class EditBachillerateComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        let aspirantBach: AspirantBachillerateDAO;
+        let aspirant: putAspirantDTO;
+
+        let aspirantBach: AspirantBachillerateDAO = {
+          schoolOrigin: form.value.schoolOriginAspirantBachillerate != '' ? `${form.value.schoolOriginAspirantBachillerate}`: `${this.dataAspirantBachillerate.schoolOrigin}`,
+          phone: form.value.phoneAspirantBachillerate != '' ? `${form.value.phoneAspirantBachillerate}`: `${this.dataAspirantBachillerate.phone}`,
+          email: form.value.emailAspirantBachillerate != '' ? `${form.value.emailAspirantBachillerate}`: `${this.dataAspirantBachillerate.email}`,
+        };
         if (this.dataAspirantBachillerate.aspirant.fatherTutor.length != 1) {
-          aspirantBach= {
-            schoolOrigin: form.value.schoolOriginAspirantBachillerate != '' ? `${form.value.schoolOriginAspirantBachillerate}`: `${this.dataAspirantBachillerate.schoolOrigin}`,
-            phone: form.value.phoneAspirantBachillerate != '' ? `${form.value.phoneAspirantBachillerate}`: `${this.dataAspirantBachillerate.phone}`,
-            email: form.value.emailAspirantBachillerate != '' ? `${form.value.emailAspirantBachillerate}`: `${this.dataAspirantBachillerate.email}`,
-            aspirant: {
-            "id": this.dataAspirantBachillerate.aspirant.id  ,
+          aspirant= {
             "name": form.value.nameAsp != '' ? `${form.value.nameAsp}` : `${this.dataAspirantBachillerate.aspirant.name}`,
             "lastNameP": form.value.lastNamePAsp != '' ? `${form.value.lastNamePAsp}` : `${this.dataAspirantBachillerate.aspirant.lastNameP}`,
             "lastNameM": form.value.lastNameMAsp != '' ? `${form.value.lastNameMAsp}` : `${this.dataAspirantBachillerate.aspirant.lastNameM}`,
@@ -162,21 +140,9 @@ export class EditBachillerateComponent implements OnInit {
                 "email": form.value.emailFather1 != '' ? `${form.value.emailFather1}` : `${this.dataAspirantBachillerate.aspirant.fatherTutor[1].email}`
               }
             ]
-          },
-            levelUpperMiddle: {
-              "id": this.dataAspirantBachillerate.levelUpperMiddle.id,
-              "name": this.dataAspirantBachillerate.levelUpperMiddle.name,
-              "level": this.dataAspirantBachillerate.levelUpperMiddle.level,
-              "img": this.dataAspirantBachillerate.levelUpperMiddle.img
-            }
-          };
+          }
         } else {
-          aspirantBach= {
-            schoolOrigin: form.value.schoolOriginAspirantBachillerate != '' ? `${form.value.schoolOriginAspirantBachillerate}`: `${this.dataAspirantBachillerate.schoolOrigin}`,
-            phone: form.value.phoneAspirantBachillerate != '' ? `${form.value.phoneAspirantBachillerate}`: `${this.dataAspirantBachillerate.phone}`,
-            email: form.value.emailAspirantBachillerate != '' ? `${form.value.emailAspirantBachillerate}`: `${this.dataAspirantBachillerate.email}`,
-            aspirant: {
-            "id": this.dataAspirantBachillerate.aspirant.id  ,
+          aspirant= {
             "name": form.value.nameAsp != '' ? `${form.value.nameAsp}` : `${this.dataAspirantBachillerate.aspirant.name}`,
             "lastNameP": form.value.lastNamePAsp != '' ? `${form.value.lastNamePAsp}` : `${this.dataAspirantBachillerate.aspirant.lastNameP}`,
             "lastNameM": form.value.lastNameMAsp != '' ? `${form.value.lastNameMAsp}` : `${this.dataAspirantBachillerate.aspirant.lastNameM}`,
@@ -204,22 +170,15 @@ export class EditBachillerateComponent implements OnInit {
                 "email": form.value.emailFather0 != '' ? `${form.value.emailFather0}` : `${this.dataAspirantBachillerate.aspirant.fatherTutor[0].email}`
               }
             ]
-          },
-            levelUpperMiddle: {
-              "id": this.dataAspirantBachillerate.levelUpperMiddle.id,
-              "name": this.dataAspirantBachillerate.levelUpperMiddle.name,
-              "level": this.dataAspirantBachillerate.levelUpperMiddle.level,
-              "img": this.dataAspirantBachillerate.levelUpperMiddle.img
-            }
-          };
+          }
         };
-        console.log(aspirantBach);
-        console.log("-------");
-        console.log(this.serviceIdBachillerAspirantService.getIdAspirantBachiller());
-
         this.serviceViewAspirantBachillerateService.putAspirantBachillerate(this.serviceIdBachillerAspirantService.getIdAspirantBachiller(), aspirantBach).subscribe(
             () => {
-              this.router.navigateByUrl(`/dashboard/NivelBachillerate`, { skipLocationChange: true });
+              this.serviceAspirantService.putUpdate(this.serviceIdBachillerAspirantService.getIdAspirant(), aspirant).subscribe(
+                  ()=>{
+                    this.router.navigateByUrl(`/dashboard/NivelBachillerate`, { skipLocationChange: true });
+                  }
+                )
             }
           );
 

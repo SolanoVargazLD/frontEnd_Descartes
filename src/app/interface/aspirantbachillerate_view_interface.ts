@@ -49,7 +49,7 @@ export interface AddressInt {
   postal_code: string;
 }
 
-export interface AspirantBachillerateDAO extends Omit<AspirantBachillerate, 'id'>{
+export interface AspirantBachillerateDAO extends Omit<AspirantBachillerate, 'id'| 'aspirant'| 'levelUpperMiddle'>{
 }
 
 // export interface putAspirantDTO extends Omit<Aspirant, 'id'|'fatherTutor'|'address'>{

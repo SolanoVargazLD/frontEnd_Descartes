@@ -6,6 +6,7 @@ import { ServiceAspirantBachillerateService } from 'src/app/service/aspirantBach
 import Swal from 'sweetalert2';
 import { AspirantNivelUpper } from '../../../../../interface/aspirantBachillerate_interface';
 import { ServiceIdBachillerAspirantService } from 'src/app/service/share_Inf/media/service-id-bachiller-aspirant.service';
+import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 
 @Component({
   selector: 'app-view-bachillerato',
@@ -21,7 +22,8 @@ export class ViewBachilleratoComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private serviceAspirantBachillerateService: ServiceAspirantBachillerateService,
-    private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,) { }
+    private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,
+    private serviceAspirantService: ServiceAspirantService) { }
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
@@ -51,7 +53,7 @@ export class ViewBachilleratoComponent implements OnInit {
 
   }
 
-  openDialog(id: number, nombre: string, apP: string, apM: string, curp: string): void {
+  openDialog(id_asp: number, nombre: string, apP: string, apM: string, curp: string): void {
     Swal.fire({
       title: 'ADVERTENCIA',
       text: `Esta seguro(a) de eliminar al Aspirante de Bachillerato ${nombre} ${apP} ${apM} - ${curp}`,
@@ -62,7 +64,9 @@ export class ViewBachilleratoComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        let resp //= this.serviceAspirantService.deleteAspirant(id).subscribe();
+        console.log(id_asp);
+
+        let resp = this.serviceAspirantService.deleteAspirant(id_asp).subscribe();
         if (resp) {
           Swal.fire(
             'Eliminado',
@@ -90,8 +94,6 @@ export class ViewBachilleratoComponent implements OnInit {
   clickViewAspirant(id: number, id_b: number) {
     this.serviceIdBachillerAspirantService.setIdAspirant(id);
     this.serviceIdBachillerAspirantService.setIdAspirantBachiller(id_b);
-    console.log("id: "+id);
-    console.log("id_B: "+id_b);
   }
 
 }
