@@ -1,5 +1,24 @@
+<mat-toolbar>
+  <span>Aspirantes Licenciatura</span>
+  <span class="toolbar-item-spacer"> </span>
+  <mat-label>No. Aspirantes: {{dataTamanio}} </mat-label>
+  <span class="toolbar-item-spacer"> </span>
+  <span>
+    <mat-form-field>
+      <mat-label> Buscar <mat-icon>search </mat-icon></mat-label>
+      <input matInput placeholder="Dato Aspirante" #input>
+    </mat-form-field>
+  </span>
 
-{{nombreLicenciature}}
+  <!-- <mat-form-field>
+    <mat-label> Buscar <mat-icon>search </mat-icon></mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Dato Aspirante" #input>
+  </mat-form-field> -->
+</mat-toolbar>
+
+<!--& --------------------------------------------  -->
+<app-select-licenciature (selectEvent)="selected= $event"></app-select-licenciature>
+<!--& --------------------------------------------  -->
 
 <div *ngIf="dataVacio===false" class="container mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="">

@@ -1,26 +1,22 @@
-import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ServiceAspirantBachillerateService } from 'src/app/service/aspirantBachillerate/viewData_aspirantB/service-aspirant-bachillerate.service';
+import { AspirantLicenciature } from 'src/app/interface/aspirant_Licenciature';
+import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
+import { ServiceViewDataLicenciatureService } from 'src/app/service/aspirantSuperior/licenciature/service-view-data-licenciature.service';
+import { ListSuperiorService } from 'src/app/service/aspirantSuperior/list-superior.service';
+import { ServiceIdBachillerAspirantService } from 'src/app/service/share_Inf/media/service-id-bachiller-aspirant.service';
 
 import Swal from 'sweetalert2';
 
-import { AspirantNivelUpper } from 'src/app/interface/aspirantBachillerate_interface';
-import { ServiceIdBachillerAspirantService } from 'src/app/service/share_Inf/media/service-id-bachiller-aspirant.service';
-import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
-import { ServiceViewDataLicenciatureService } from 'src/app/service/aspirantSuperior/licenciature/service-view-data-licenciature.service';
-import { AspirantLicenciature } from 'src/app/interface/aspirant_Licenciature';
-
-
 @Component({
-  selector: 'app-aspirant-licenciature',
-  templateUrl: './aspirant-licenciature.component.html',
-  styleUrls: ['./aspirant-licenciature.component.css']
+  selector: 'app-show-licenciatures',
+  templateUrl: './show-licenciatures.component.html',
+  styleUrls: ['./show-licenciatures.component.css']
 })
-
-export class AspirantLicenciatureComponent implements OnInit, OnChanges  {
-  @Input() nombreLicenciature: string= 'Civil';
-
+export class ShowLicenciaturesComponent implements OnInit, OnChanges  {
+   nombreLicenciature: string= 'Civil';
+   @Input() selected:string;
     displayedColumns: string[] = ['Id', 'name', 'lastNameP', 'lastNameM', 'curp', 'operations'];
     dataSource: any;
     dataVacio: boolean = false;
@@ -28,7 +24,7 @@ export class AspirantLicenciatureComponent implements OnInit, OnChanges  {
     tipeBusqueda: string = '';
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-    constructor(private serviceAspirantBachillerateService: ServiceAspirantBachillerateService,
+    constructor(private listSuperiorService: ListSuperiorService,
       private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,
       private serviceAspirantService: ServiceAspirantService,
       private serviceViewDataLicenciatureService: ServiceViewDataLicenciatureService) { }
@@ -38,9 +34,33 @@ export class AspirantLicenciatureComponent implements OnInit, OnChanges  {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-      if (changes['nombreLicenciature']) {
-        console.log('El valor de nombreLicenciature ha cambiado=> '+this.nombreLicenciature);
-        this.serviceViewDataLicenciatureService.getApirantsLicenciature(this.nombreLicenciature).subscribe(
+      console.log("algo Cambio");
+    }
+
+    recargarData(){
+      this.serviceViewDataLicenciatureService.getApirantsLicenciature( this.selected).subscribe(
+        {
+          next: data => {
+            this.dataSource = new MatTableDataSource<AspirantLicenciature>(data);
+            this.dataSource.paginator = this.paginator;
+            this.dataVacio = (data.length == 0) ? true : false;
+            this.dataTamanio = data.length;
+          },
+          error: error => {
+            console.log("Error: " + error);
+          }
+        });
+    }
+
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+
+    readDataServiceAspirantBasic() {
+      console.log("readDataServiceAspirantBasic: "+this.nombreLicenciature);
+      this.listSuperiorService.getListLicenciature().subscribe(data=> {
+        this.serviceViewDataLicenciatureService.getApirantsLicenciature(data[0].name).subscribe(
           {
             next: data => {
               this.dataSource = new MatTableDataSource<AspirantLicenciature>(data);
@@ -53,28 +73,8 @@ export class AspirantLicenciatureComponent implements OnInit, OnChanges  {
             }
           });
       }
-    }
+  );
 
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
-
-    readDataServiceAspirantBasic() {
-      console.log(this.nombreLicenciature);
-
-      this.serviceViewDataLicenciatureService.getApirantsLicenciature(this.nombreLicenciature).subscribe(
-        {
-          next: data => {
-            this.dataSource = new MatTableDataSource<AspirantLicenciature>(data);
-            this.dataSource.paginator = this.paginator;
-            this.dataVacio = (data.length == 0) ? true : false;
-            this.dataTamanio = data.length;
-          },
-          error: error => {
-            console.log("Error: " + error);
-          }
-        });
     }
 
     openDialog(id_asp: number, nombre: string, apP: string, apM: string, curp: string): void {

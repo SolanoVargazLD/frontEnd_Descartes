@@ -1,0 +1,12 @@
+
+<mat-toolbar>
+  <span>
+    <mat-form-field appearance="fill">
+      <mat-label>Selecciona Licenciatura:</mat-label>
+      <mat-select [(value)]="selected" name="lic">
+        <mat-option  (click)="enviarDataSelect()" *ngFor="let lic of dataLic" [value]="lic.name">{{lic.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+</mat-toolbar>
+
