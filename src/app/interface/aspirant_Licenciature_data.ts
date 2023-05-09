@@ -1,21 +1,23 @@
 
-export interface AspirantBachillerate {
+export interface AspirantLicenciatureData {
   id: number;
   schoolOrigin: string;
   phone: string;
   email: string;
-  aspirant: AspirantBachiller;
-  levelUpperMiddle: LevelUpperMiddle;
+  aspirant: AspirantLic;
+  levelHigher: LevelHigher;
 }
 
-export interface LevelUpperMiddle {
+export interface LevelHigher {
   id: number;
-  name: string;
-  level: string;
+  name_career: string;
+  keyCareer: string;
+  nivel_educative: string;
   img: string;
+  pdf: string;
 }
 
-export interface AspirantBachiller {
+export interface AspirantLic {
   id: number;
   name: string;
   lastNameP: string;
@@ -25,11 +27,11 @@ export interface AspirantBachiller {
   conditionS: string;
   sex: string;
   tipoAspirant: string;
-  fatherTutor: FatherTutorInt[];
-  address: AddressInt;
+  fatherTutor: FatherTutor[];
+  address: Address;
 }
 
-export interface FatherTutorInt {
+export interface FatherTutor {
   id: number;
   name: string;
   lastNameP: string;
@@ -39,7 +41,7 @@ export interface FatherTutorInt {
   email: string;
 }
 
-export interface AddressInt {
+export interface Address {
   id: number;
   street: string;
   number: string;
@@ -48,5 +50,5 @@ export interface AddressInt {
   postal_code: string;
 }
 
-export interface AspirantBachillerateDAO extends Omit<AspirantBachillerate, 'id'| 'aspirant'| 'levelUpperMiddle'>{
+export interface AspirantLicenciatureDataDAO extends Omit<AspirantLicenciatureData, 'id'| 'aspirant'| 'levelHigher'>{
 }

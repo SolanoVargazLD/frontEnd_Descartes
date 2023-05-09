@@ -17,7 +17,7 @@
 </mat-toolbar>
 
 <!--& --------------------------------------------  -->
-<app-select-licenciature (selectEvent)="selected= $event"></app-select-licenciature>
+<app-select-licenciature [selected]="selected" (selectEvent)="selected= $event"></app-select-licenciature>
 <!--& --------------------------------------------  -->
 
 <div *ngIf="dataVacio===false" class="container mat-elevation-z8">

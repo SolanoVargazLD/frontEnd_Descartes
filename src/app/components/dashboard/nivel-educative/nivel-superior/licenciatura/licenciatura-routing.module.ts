@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewAspirantLicenciatureComponent } from './view-aspirant-licenciature/view-aspirant-licenciature.component';
 import { ShowLicenciaturesComponent } from './show-licenciatures/show-licenciatures.component';
+import { LicenciaturaComponent } from './licenciatura.component';
+import { ViewAspirantLicenciatureComponent } from './view-aspirant-licenciature/view-aspirant-licenciature.component';
+import { EditAspirantLicenciatureComponent } from './edit-aspirant-licenciature/edit-aspirant-licenciature.component';
 
 const routes: Routes = [
-  {path: '', component: ShowLicenciaturesComponent, children:[
+  {path: '', component: LicenciaturaComponent, children:[
     {path: '', component: ShowLicenciaturesComponent},
-    //{path: 'View_aspirant', component: ViewAspirantLicenciatureComponent},
+    {path: 'View_aspirant', component: ViewAspirantLicenciatureComponent},
+    {path: 'Edit_aspirant', component: EditAspirantLicenciatureComponent},
     {path: '**', redirectTo:'' , pathMatch: 'full' }
   ]}
 ];
