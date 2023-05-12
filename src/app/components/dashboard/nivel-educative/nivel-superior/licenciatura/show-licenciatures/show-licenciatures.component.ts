@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AspirantLicenciature } from 'src/app/interface/aspirant_Licenciature';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceViewDataLicenciatureService } from 'src/app/service/aspirantSuperior/licenciature/service-view-data-licenciature.service';
-import { ListSuperiorService } from 'src/app/service/aspirantSuperior/list-superior.service';
+import { ListSuperiorService } from 'src/app/service/aspirantSuperior/licenciature/list-superior/list-superior.service';
 import { ServiceIdLicenciatureService } from 'src/app/service/share_Inf/superior/licenciature/service-id-licenciature.service';
 
 import Swal from 'sweetalert2';
@@ -30,6 +30,7 @@ export class ShowLicenciaturesComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.serviceIdLicenciatureService.getSelected() == '') {
+      this.listSuperiorService.getListLicenciature().subscribe(data => {this.selected=data[0].name});
       this.readDataServiceAspirantBasic();
     } else {
       this.selected = this.serviceIdLicenciatureService.getSelected();
@@ -50,7 +51,7 @@ export class ShowLicenciaturesComponent implements OnInit {
           console.log("Error: " + error);
         }
       });
-  }
+    }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -117,7 +118,9 @@ export class ShowLicenciaturesComponent implements OnInit {
   clickViewAspirant(id: number, id_b: number) {
     this.serviceIdLicenciatureService.setIdAspirant(id);
     this.serviceIdLicenciatureService.setIdAspirantLicenciature(id_b);
-    this.serviceIdLicenciatureService.setSelected(this.selected);
+     this.serviceIdLicenciatureService.setSelected(this.selected);
+
+
   }
 
 }

@@ -1,0 +1,26 @@
+
+<mat-toolbar>
+
+  <span class="toolbar-item-spacer">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Nivel</mat-label>
+      <mat-select [(value)]="selectedNivel">
+        <mat-option (click)="enviarDataSelect()" value="Maestria">Maestria</mat-option>
+        <mat-option (click)="enviarDataSelect()" value="Doctorado">Doctorado</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+  <!-- &        Select       -->
+  <span class="toolbar-item-spacer">
+    <mat-form-field appearance="fill">
+      <mat-label>Selecciona Licenciatura:</mat-label>
+      <mat-select [(value)]="selectedPosgrado" name="lic">
+        <mat-option  (click)="enviarDataSelect()" *ngFor="let lic of dataPos" [value]="lic.name">{{lic.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+  <span class="toolbar-item-spacer"> </span>
+  <span class="toolbar-item-spacer"> </span>
+  <span class="toolbar-item-spacer"> </span>
+
+</mat-toolbar>

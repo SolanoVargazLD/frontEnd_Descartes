@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span>Aspirantes Licenciatura</span>
+  <span>Aspirantes Posgrado</span>
   <span class="toolbar-item-spacer"> </span>
   <mat-label>No. Aspirantes: {{dataTamanio}} </mat-label>
   <span class="toolbar-item-spacer"> </span>
@@ -7,12 +7,14 @@
     <mat-form-field>
     <mat-label> Buscar <mat-icon>search </mat-icon></mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Dato Aspirante" #input>
-  </mat-form-field>
+    </mat-form-field>
   </span>
+
+
 </mat-toolbar>
 
 <!--& --------------------------------------------  -->
-<app-select-licenciature [selected]="selected" (selectEvent)="selected= $event"></app-select-licenciature>
+<app-select-maestria-doctorado [selectedNivel]="selected" (selectEventNivelPos)="selectedPosgrado= $event" (selectEventPos)="selected= $event"></app-select-maestria-doctorado>
 <!--& --------------------------------------------  -->
 
 <div *ngIf="dataVacio===false" class="container mat-elevation-z8">
@@ -42,9 +44,9 @@
       <td mat-cell *matCellDef="let element">{{element.lastNameM}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="curp">
-      <th mat-header-cell *matHeaderCellDef> Curp </th>
-      <td mat-cell *matCellDef="let element"> {{element.curp}} </td>
+    <ng-container matColumnDef="cedula">
+      <th mat-header-cell *matHeaderCellDef> Cedula </th>
+      <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
     </ng-container>
 
     <ng-container matColumnDef="operations">

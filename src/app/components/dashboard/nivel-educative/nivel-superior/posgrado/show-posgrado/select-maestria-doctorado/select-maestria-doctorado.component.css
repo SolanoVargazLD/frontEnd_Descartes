@@ -1,0 +1,38 @@
+
+.container{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 5px;
+}
+
+mat-form-field{
+  margin-top: 15px;
+}
+
+.toolbar-item-spacer {
+  flex: 1 1 auto;
+}
+
+table {
+  width: 80%;
+}
+
+.container th{
+  text-align: center;
+}
+
+.container td{
+  text-align: center;
+}
+
+.celd-center-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.pointer{
+  cursor: pointer;
+}
