@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { listSuperior } from 'src/app/interface/list_levelHigher_interface';
-import { ListSuperiorService } from 'src/app/service/aspirantSuperior/list-superior.service';
+import { ListSuperiorService } from 'src/app/service/aspirantSuperior/licenciature/list-superior/list-superior.service';
 import { ShowLicenciaturesComponent } from '../show-licenciatures.component';
 import { ServiceIdLicenciatureService } from '../../../../../../../service/share_Inf/superior/licenciature/service-id-licenciature.service';
 @Component({
