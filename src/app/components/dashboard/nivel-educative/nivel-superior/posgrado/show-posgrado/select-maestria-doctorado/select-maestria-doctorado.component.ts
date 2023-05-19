@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { listSuperior } from 'src/app/interface/list_levelHigher_interface';
 import { ServiceDataPosgradoService } from 'src/app/service/aspirantSuperior/posgrado/data-posgrado/service-data-posgrado.service';
 import { ShowPosgradoComponent } from '../show-posgrado.component';
+import { ServicioIdPosgradoService } from 'src/app/service/share_Inf/superior/posgrado/servicio-id-posgrado.service';
 
 @Component({
   selector: 'app-select-maestria-doctorado',
@@ -17,11 +18,12 @@ export class SelectMaestriaDoctoradoComponent  implements OnInit, OnChanges{
   @Output() selectEventNivelPos= new EventEmitter<string>();
 
   constructor(private serviceDataPosgradoService: ServiceDataPosgradoService,
+    private servicioIdPosgradoService: ServicioIdPosgradoService,
     private compPadre: ShowPosgradoComponent,
     ){}
 
   ngOnInit(): void {
-    this.loadData();
+    // this.loadData();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -39,7 +41,11 @@ export class SelectMaestriaDoctoradoComponent  implements OnInit, OnChanges{
   loadData(){
     this.serviceDataPosgradoService.getListPosgradoCareer(this.selectedNivel).subscribe(data=> {
           this.dataPos = data;
-          this.selectedPosgrado= data[0].name;
+          if(this.servicioIdPosgradoService.getSelectedPosgrad()==''){
+            this.selectedPosgrado=data[0].name;
+          }else{
+            this.selectedPosgrado= this.servicioIdPosgradoService.getSelectedPosgrad()!=data[0].name?this.servicioIdPosgradoService.getSelectedPosgrad():data[0].name ;
+          }
           this.enviarDataSelect();
         }
     );

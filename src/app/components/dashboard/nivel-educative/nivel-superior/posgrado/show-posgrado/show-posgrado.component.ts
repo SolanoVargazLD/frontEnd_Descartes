@@ -30,16 +30,17 @@ export class ShowPosgradoComponent implements OnInit {
     private serviceAspirantService: ServiceAspirantService) { }
 
   ngOnInit(): void {
-    if (this.servicioIdPosgradoService.getSelected() == '') {
+    if (this.servicioIdPosgradoService.getSelectedNivel() == '') {
       this.readDataServiceAspirantBasic();
     } else {
-      this.selected = this.servicioIdPosgradoService.getSelected();
+      this.selected = this.servicioIdPosgradoService.getSelectedNivel();
+      this.selectedPosgrado= this.servicioIdPosgradoService.getSelectedPosgrad();
       this.recargarData();
     }
   }
 
   recargarData() {
-    this.serviceDataPosgradoService.getListPosgradoCareer(this.selected).subscribe(data => {
+    console.log("Nivel "+ this.selected +" Posgrado "+this.selectedPosgrado);
       this.servicioAspirantPosgradoService.getlistPosgrado(this.selectedPosgrado, this.selected).subscribe({
           next: data => {
             this.dataSource = new MatTableDataSource<AspirantPostgrado>(data);
@@ -51,7 +52,6 @@ export class ShowPosgradoComponent implements OnInit {
             console.log("Error: " + error);
           }
         });
-    });
   }
 
   applyFilter(event: Event) {
@@ -60,9 +60,10 @@ export class ShowPosgradoComponent implements OnInit {
   }
 
   readDataServiceAspirantBasic() {
+            console.log();
     this.serviceDataPosgradoService.getListPosgradoCareer(this.selected).subscribe(data => {
+      console.log("selectedRDSAB: "+ this.selected + ": postRDSAB: "+ data[0].name);
       this.servicioAspirantPosgradoService.getlistPosgrado(data[0].name, this.selected).subscribe({
-
           next: data => {
             this.dataSource = new MatTableDataSource<AspirantPostgrado>(data);
             this.dataSource.paginator = this.paginator;
@@ -96,7 +97,7 @@ export class ShowPosgradoComponent implements OnInit {
             'Aspirante eliminado de la lista',
             'success'
           ).then((result) => {
-            this.recargarData();
+            // this.recargarData();
           })
         } else {
           Swal.fire(
@@ -113,7 +114,13 @@ export class ShowPosgradoComponent implements OnInit {
   clickViewAspirant(id: number, id_b: number) {
     this.servicioIdPosgradoService.setIdAspirant(id);
     this.servicioIdPosgradoService.setIdAspirantPosgrado(id_b);
-    this.servicioIdPosgradoService.setSelected(this.selected);
+    this.servicioIdPosgradoService.setSelectedNivel(this.selected);
+    this.servicioIdPosgradoService.setSelectedPosgrad(this.selectedPosgrado);
+    console.log("id_aspirant: "+ id);
+    console.log("id_aspirantPosgrado: "+ id_b);
+    console.log("id_selectedN: "+ this.selected);
+    console.log("id_selectedP: "+ this.selectedPosgrado);
+
   }
 
 }

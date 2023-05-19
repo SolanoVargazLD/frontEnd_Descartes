@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     const userLogin = this.form.value.user;
     const passwordLogin = this.form.value.password;
 
-    if(userLogin == "ludan" && passwordLogin == "l"){
+    if(userLogin == "Descartes" && passwordLogin == "d"){
       //! Redireccionar al Dasboard
       this.fakeLoading();
     }else{

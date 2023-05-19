@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 export class ServicioIdPosgradoService {
   idAspirant: number= 0;
   idAspirantPosgrado: number= 0;
-  selected: string= '';
+  selectedNivel: string= '';
+  selectedPosgrad: string= '';
 
   constructor(private http: HttpClient) { }
 
@@ -15,23 +16,31 @@ export class ServicioIdPosgradoService {
     return this.idAspirant;
   }
 
-  public setIdAspirant(valor: number): void {
-    this.idAspirant = valor;
+  public setIdAspirant(valorI: number): void {
+    this.idAspirant = valorI;
   }
 
   public getIdAspirantPosgrado (): number {
     return this.idAspirantPosgrado;
   }
 
-  public setIdAspirantPosgrado(valor: number): void {
-    this.idAspirantPosgrado = valor;
+  public setIdAspirantPosgrado(valorA: number): void {
+    this.idAspirantPosgrado = valorA;
   }
 
-  public getSelected(): string {
-    return this.selected;
+  public getSelectedNivel(): string {
+    return this.selectedNivel;
   }
 
-  public setSelected(valor: string): void {
-    this.selected = valor;
+  public setSelectedNivel(valorN: string): void {
+    this.selectedNivel = valorN;
+  }
+
+  public getSelectedPosgrad(): string {
+    return this.selectedPosgrad;
+  }
+
+  public setSelectedPosgrad(valorP: string): void {
+    this.selectedPosgrad = valorP;
   }
 }

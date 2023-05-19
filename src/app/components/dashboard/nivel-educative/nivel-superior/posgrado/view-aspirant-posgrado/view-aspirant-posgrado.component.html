@@ -1,0 +1,242 @@
+<div class="containerSeparator">
+  <h1 class="separador-texto">Informaci&oacute;n del Escolar</h1>
+</div>
+<div class="container">
+  <form>
+    <div>
+      <div class="leftcontact">
+        <div class="form-group">
+          <p>ID</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.tipoAspirant}} </mat-label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p>Numero Telefonico</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.phone}} </mat-label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p>Nivel</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataNivel}} </mat-label>
+          </div>
+        </div>
+      </div>
+
+      <div class="rightcontact">
+        <div class="form-group">
+          <p>Escuela Procedencia</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.professionalLicense}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Correo Electronico</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.email}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Posgrado</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataPost}}</mat-label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="containerSeparator">
+  <h1 class="separador-texto">Informacion del Aspirante</h1>
+</div>
+<div class="container">
+  <form>
+    <div>
+      <div class="leftcontact">
+        <div class="form-group">
+          <p>Nombre</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.name}} </mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Apellido Materno</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.lastNameM}} </mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Sexo</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.sex}}</mat-label>
+          </div>
+        </div>
+      </div>
+
+      <div class="rightcontact">
+        <div class="form-group">
+          <p>Apellido Paterno</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.lastNameP}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Curp</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.curp}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Condicion/Enfermedad</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.conditionS}}</mat-label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div class="containerSeparator">
+  <h1 class="separador-texto">Informacion de la direcci&ograve;n</h1>
+</div>
+
+<div class="container">
+  <form>
+    <div>
+      <div class="leftcontact">
+        <div class="form-group">
+          <p>Calle</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.address.street}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Colonia</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.address.colony}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Codigo Postal</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.address.postal_code}}</mat-label>
+          </div>
+        </div>
+      </div>
+
+      <div class="rightcontact">
+        <div class="form-group">
+          <p>Numero</p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.address.number}}</mat-label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Municipio/p>
+          <div class="borderContent">
+            <span class="icon-case"></span>
+            <mat-label class="labelContent">{{dataAspirantPos.aspirant.address.municipality}}</mat-label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div class="containerSeparator">
+  <h1 class="separador-texto">Informacion Padre o Tutor</h1>
+</div>
+
+<div *ngFor="let fatherTutor of dataAspirantPos.aspirant.fatherTutor, let i= index ">
+  <div class="containerSeparatorInt">
+    <h1 class="separador-textoInt">Informacion Padre o Tutor {{i+1}} </h1>
+  </div>
+  <div class="container">
+    <form>
+      <div>
+        <div class="leftcontact">
+          <div class="form-group">
+            <p>Nombre</p>
+            <div class="borderContent">
+              <span class="icon-case"></span>
+              <mat-label class="labelContent">{{fatherTutor.name}}</mat-label>
+            </div>
+          </div>
+          <div class="form-group">
+            <p>Apellido Materno</p>
+            <div class="borderContent">
+              <span class="icon-case"></span>
+              <mat-label class="labelContent">{{fatherTutor.lastNameM}}</mat-label>
+            </div>
+          </div>
+          <div class="form-group">
+            <p>Telefono 1</p>
+            <div class="borderContent">
+              <span class="icon-case"></span>
+              <mat-label class="labelContent">{{fatherTutor.phone1}}</mat-label>
+            </div>
+          </div>
+        </div>
+
+        <div class="rightcontact">
+          <div class="form-group">
+            <p>Apellido Paterno</p>
+            <div class="borderContent">
+              <span class="icon-case"></span>
+              <mat-label class="labelContent">{{fatherTutor.lastNameP}}</mat-label>
+            </div>
+          </div>
+          <div class="form-group">
+            <p>Correo Electronico</p>
+            <div class="borderContent">
+              <span class="icon-case"></span>
+              <mat-label class="labelContent">{{fatherTutor.email}} </mat-label>
+            </div>
+          </div>
+          <div class="form-group">
+            <p>Telefono 2</p>
+            <div class="borderContent">
+              <span class="icon-case"></span>
+              <mat-label class="labelContent">{{fatherTutor.phone2}}</mat-label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+<div class="containerB">
+  <div class="space"></div>
+  <div class="space"></div>
+  <div class="space">
+    <button mat-raised-button (click)="goBack()" style="color: white; background-color: #1A73E8;">Aceptar</button>
+  </div>
+  <div class="space"></div>
+  <div class="space"></div>
+</div>
