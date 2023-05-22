@@ -7,7 +7,7 @@ import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspiran
 import Swal from 'sweetalert2';
 import { AspirantLicenciatureData, AspirantLicenciatureDataDAO } from 'src/app/interface/aspirant_Licenciature_data';
 import { ServiceIdLicenciatureService } from 'src/app/service/share_Inf/superior/licenciature/service-id-licenciature.service';
-import { ServiceviewAspirantsLicenciatureService } from 'src/app/service/share_Inf/superior/licenciature/view-licenciature/serviceview-aspirants-licenciature.service';
+import { ServiceviewAspirantsLicenciatureService } from '../../../../../../service/aspirantSuperior/licenciature/edit_licenciature/serviceview-aspirants-licenciature.service';
 
 @Component({
   selector: 'app-edit-aspirant-licenciature',

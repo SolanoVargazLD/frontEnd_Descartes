@@ -1,1 +1,163 @@
-<p>edit-aspirant-posgrado works!</p>
+<div class="container">
+    <div class="containerSeparator">
+      <h1 class="separador-texto">Informaci&oacute;n del aspirante</h1>
+    </div>
+
+    <form #ngfpr (ngSubmit)="saveData(templateModific)" #templateModific="ngForm">
+      <table class="example-full-width" cellspacing="20">
+        <mat-form-field class="example-full-width">
+          <mat-label>Id Aspirante</mat-label>
+          <input matInput disabled value="{{dataAspirantPos.id}}{{dataAspirantPos.aspirant.tipoAspirant}}">
+        </mat-form-field>
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Nombre</mat-label>
+              <input matInput name="nameAsp" [(ngModel)]="dataAspirantPos.aspirant.name">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Apellido Paterno</mat-label>
+              <input matInput name="lastNamePAsp" [(ngModel)]="dataAspirantPos.aspirant.lastNameP">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Apellido Materno</mat-label>
+              <input matInput name="lastNameMAsp" [(ngModel)]="dataAspirantPos.aspirant.lastNameM">
+            </mat-form-field></td>
+        </tr>
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Curp</mat-label>
+              <input matInput name="curpAsp" [(ngModel)]="dataAspirantPos.aspirant.curp">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>sex</mat-label>
+              <input matInput name="sexAsp" [(ngModel)]="dataAspirantPos.aspirant.sex">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Tipo Sangre</mat-label>
+              <input matInput name="tSangreAsp" [(ngModel)]="dataAspirantPos.aspirant.bloodType">
+            </mat-form-field></td>
+        </tr>
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Cedula Profesional</mat-label>
+              <input matInput name="professionalLicensePosgrado" [(ngModel)]="dataAspirantPos.professionalLicense">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Telefono</mat-label>
+              <input matInput name="phoneAspirantPosgrado" [(ngModel)]="dataAspirantPos.phone">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Correo Electronico</mat-label>
+              <input matInput name="emailAspirantPosgrado" [(ngModel)]="dataAspirantPos.email">
+            </mat-form-field></td>
+        </tr>
+      </table>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Condici&oacute;n Medica</mat-label>
+        <input matInput name="conditAsp" [(ngModel)]="dataAspirantPos.aspirant.conditionS">
+      </mat-form-field>
+
+      <!--& _________________________________Direccion _______________________________ -->
+      <div class="containerSeparator">
+        <h1 class="separador-texto">Informaci&oacute;n de la Direcci&oacute;n</h1>
+      </div>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>N&uacute;mero</mat-label>
+              <input matInput name="numberAspAdr" [(ngModel)]="dataAspirantPos.aspirant.address.number">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Calle</mat-label>
+              <input matInput name="streetAspAdr" [(ngModel)]="dataAspirantPos.aspirant.address.street">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Colonia</mat-label>
+              <input matInput name="colonyAspAdr" [(ngModel)]="dataAspirantPos.aspirant.address.colony">
+            </mat-form-field></td>
+        </tr>
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Municipio</mat-label>
+              <input matInput name="municipalyAspAdr" [(ngModel)]="dataAspirantPos.aspirant.address.municipality">
+            </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Postal Code</mat-label>
+              <input matInput name="postalAspAdr" ngModel #postalCode maxlength="5" placeholder="XXXXX"
+                value="{{dataAspirantPos.aspirant.address.postal_code}}">
+              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field></td>
+        </tr>
+      </table>
+
+      <!-- &________________________________Padre/Tutor_________________________ -->
+      <div class="containerSeparator">
+        <h1 class="separador-texto">Informaci&oacute;n de Emergencia</h1>
+      </div>
+      <div *ngFor="let fatherTutor of dataAspirantPos.aspirant.fatherTutor, let i=
+        index ">
+        <div class="containerSeparator">
+          <h1 class="separador-texto-padre">Informaci&oacute;n {{i+1}}</h1>
+        </div>
+        <table class="example-full-width" cellspacing="20">
+          <tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="NameFather{{i}}" [(ngModel)]="fatherTutor.name">
+              </mat-form-field></td>
+
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Apellido Paterno</mat-label>
+                <input matInput name="lastNamePFather{{i}}" [(ngModel)]="fatherTutor.lastNameP">
+              </mat-form-field></td>
+
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Apellido Materno</mat-label>
+                <input matInput name="lastNameMFather{{i}}" [(ngModel)]="fatherTutor.lastNameM">
+              </mat-form-field></td>
+          </tr>
+          <tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Correo Electronico</mat-label>
+                <input matInput name="emailFather{{i}}" [(ngModel)]="fatherTutor.email">
+              </mat-form-field></td>
+
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Telefono 1</mat-label>
+                <input matInput name="phone1Father{{i}}" [(ngModel)]="fatherTutor.phone1">
+              </mat-form-field></td>
+
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Telefono 2</mat-label>
+                <input matInput name="phone2Father{{i}}" [(ngModel)]="fatherTutor.phone2">
+              </mat-form-field></td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class="containerB">
+        <div class="space"></div>
+        <div class="space">
+          <button mat-raised-button type="submit" style="color: white; background-color: #1A73E8;">Aceptar</button>
+        </div>
+        <div class="space"></div>
+        <div class="space">
+          <button mat-raised-button (click)="goBack()" style="color: white;
+            background-color: #f36262;">Cancelar</button>
+        </div>
+        <div class="space"></div>
+      </div>
+    </form>
+  </div>

@@ -5,25 +5,28 @@
   <span class="toolbar-item-spacer"> </span>
   <span>
     <mat-form-field>
-    <mat-label> Buscar <mat-icon>search </mat-icon></mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Dato Aspirante" #input>
+      <mat-label> Buscar <mat-icon>search </mat-icon></mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Dato Aspirante"
+        #input>
     </mat-form-field>
   </span>
-
 
 </mat-toolbar>
 
 <!--& --------------------------------------------  -->
-<app-select-maestria-doctorado [selectedNivel]="selected" (selectEventNivelPos)="selectedPosgrado= $event" (selectEventPos)="selected= $event"></app-select-maestria-doctorado>
+<app-select-maestria-doctorado [selectedNivel]="selected"
+  (selectEventNivelPos)="selectedPosgrado= $event"
+  (selectEventPos)="selected= $event"></app-select-maestria-doctorado>
 <!--& --------------------------------------------  -->
 
 <div *ngIf="dataVacio===false" class="container mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" class="">
+  <table mat-table [dataSource]="dataSource" class>
 
     <!-- Position Column -->
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element, let i= index"> {{i+1}}{{element.tip_asp}} </td>
+      <td mat-cell *matCellDef="let element, let i= index">
+        {{i+1}}{{element.tip_asp}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -53,13 +56,21 @@
       <th mat-header-cell *matHeaderCellDef> Operaciones </th>
       <td mat-cell *matCellDef="let element">
         <div class="celd-center-icon">
-          <a routerLink="#" (click)="clickViewAspirant(element.id_asp, element.id_asp_posgrado)" queryParamsHandling="merge"  class="pointer" style="color: #03A600" matTooltip="Ver Aspirante" title="">
+          <a routerLink="View_aspirant"
+            (click)="clickViewAspirant(element.id_asp, element.id_asp_posgrado)"
+            queryParamsHandling="merge" class="pointer" style="color: #03A600"
+            matTooltip="Ver Aspirante" title>
             <mat-icon>visibility</mat-icon>
           </a>
-          <a routerLink="Edit_aspirant" (click)="clickViewAspirant(element.id_asp, element.id_asp_posgrado)" queryParamsHandling="merge" class="pointer" style="color: #005DA6;" matTooltip="Modificar Aspirante" title="">
+          <a routerLink="Edit_aspirant"
+            (click)="clickViewAspirant(element.id_asp, element.id_asp_posgrado)"
+            queryParamsHandling="merge" class="pointer" style="color: #005DA6;"
+            matTooltip="Modificar Aspirante" title>
             <mat-icon>edit</mat-icon>
           </a>
-          <a class="pointer" (click)="openDialog(element.id_asp, element.name, element.lastNameP, element.lastNameM, element.curp)" style="color: #FF0000;  margin-right: 8px;" title=""
+          <a class="pointer"
+            (click)="openDialog(element.id_asp, element.name, element.lastNameP, element.lastNameM, element.curp)"
+            style="color: #FF0000;  margin-right: 8px;" title
             matTooltip="Eliminar Aspirante">
             <mat-icon>delete</mat-icon>
           </a>
@@ -72,12 +83,14 @@
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" style="font-size: 20px; " colspan="6">No existen datos que coincidan con la busqueda:
+      <td class="mat-cell" style="font-size: 20px; " colspan="6">No existen
+        datos que coincidan con la busqueda:
         <!-- <br>"{{input.value}}" -->
       </td>
     </tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[20, 10, 5]" showFirstLastButtons aria-label="Select page of periodic elements">
+  <mat-paginator [pageSizeOptions]="[20, 10, 5]" showFirstLastButtons
+    aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
 

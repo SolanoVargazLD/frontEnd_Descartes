@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AspirantLicenciatureData } from 'src/app/interface/aspirant_Licenciature_data';
 import { ServiceIdLicenciatureService } from 'src/app/service/share_Inf/superior/licenciature/service-id-licenciature.service';
-import { ServiceviewAspirantsLicenciatureService } from 'src/app/service/share_Inf/superior/licenciature/view-licenciature/serviceview-aspirants-licenciature.service';
+import { ServiceviewAspirantsLicenciatureService } from '../../../../../../service/aspirantSuperior/licenciature/edit_licenciature/serviceview-aspirants-licenciature.service';
 
 @Component({
   selector: 'app-view-aspirant-licenciature',

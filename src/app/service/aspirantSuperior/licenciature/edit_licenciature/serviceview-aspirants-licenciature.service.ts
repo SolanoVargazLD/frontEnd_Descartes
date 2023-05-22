@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServiceviewAspirantsLicenciatureService {
   private url: string= `${environment._apiURL}aspirantSuperior`;
 
