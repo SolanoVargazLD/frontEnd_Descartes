@@ -47,15 +47,12 @@ export class ShowPosgradoComponent implements OnInit {
                 console.log("Error: " + error);
             }
         });
-
         if (this.servicioIdPosgradoService.getSelectedNivel() != '') {
             this.servicioIdPosgradoService.setIdAspirant(0);
             this.servicioIdPosgradoService.setIdAspirantPosgrado(0);
             this.servicioIdPosgradoService.setSelectedNivel('');
             this.servicioIdPosgradoService.setSelectedPosgrad('');
         }
-
-
     }
 
     applyFilter(event : Event) {
@@ -90,12 +87,10 @@ export class ShowPosgradoComponent implements OnInit {
             confirmButtonText: 'Aceptar'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log(id_asp);
-
-                let resp = this.serviceAspirantService.deleteAspirant(id_asp).subscribe();
-                if (resp) {
-                    Swal.fire('Eliminado', 'Aspirante eliminado de la lista', 'success').then((result) => { // this.recargarData();
-                    })
+                if (this.serviceAspirantService.deleteAspirant(id_asp).subscribe()) {
+                    Swal.fire('Eliminado', 'Aspirante eliminado de la lista', 'success').then((result) => {
+                        this.recargarData();
+                    });
                 } else {
                     Swal.fire('Fallo', 'Aspirante no eliminado, revisar informacion.', 'question');
                 };
