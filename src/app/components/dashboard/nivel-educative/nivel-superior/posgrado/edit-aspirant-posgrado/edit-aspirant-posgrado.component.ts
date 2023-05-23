@@ -63,9 +63,9 @@ export class EditAspirantPosgradoComponent implements OnInit {
     private router: Router,){}
 
   ngOnInit(): void {
-    // if(this.serviceIdLicenciatureService.getIdAspirant()==0){
-      // this.router.navigateByUrl(`/dashboard/NivelPosgrado`, { skipLocationChange: true });
-    // }
+    if(this.servicioIdPosgradoService.getIdAspirant()==0){
+      this.router.navigateByUrl(`/dashboard/NivelPosgrado`, { skipLocationChange: true });
+    }
     this.assignValueAspirant();
   }
 
@@ -131,19 +131,13 @@ export class EditAspirantPosgradoComponent implements OnInit {
                 "phone1": form.value.phone1Father0 != '' ? `${form.value.phone1Father0}` : `${this.dataAspirantPos.aspirant.fatherTutor[0].phone1}`,
                 "phone2": form.value.phone2Father0 != '' ? `${form.value.phone2Father0}` : `${this.dataAspirantPos.aspirant.fatherTutor[0].phone2}`,
                 "email": form.value.emailFather0 != '' ? `${form.value.emailFather0}` : `${this.dataAspirantPos.aspirant.fatherTutor[0].email}`
-              },
-              {
-                "id": this.dataAspirantPos.aspirant.fatherTutor[1].id,
-                "name": form.value.NameFather1 != '' ? `${form.value.NameFather1}` : `${this.dataAspirantPos.aspirant.fatherTutor[1].name}`,
-                "lastNameP": form.value.lastNamePFather1 != '' ? `${form.value.lastNamePFather1}` : `${this.dataAspirantPos.aspirant.fatherTutor[1].lastNameP}`,
-                "lastNameM": form.value.lastNameMFather1 != '' ? `${form.value.lastNameMFather1}` : `${this.dataAspirantPos.aspirant.fatherTutor[1].lastNameM}`,
-                "phone1": form.value.phone1Father1 != '' ? `${form.value.phone1Father1}` : `${this.dataAspirantPos.aspirant.fatherTutor[1].phone1}`,
-                "phone2": form.value.phone2Father1 != '' ? `${form.value.phone2Father1}` : `${this.dataAspirantPos.aspirant.fatherTutor[1].phone2}`,
-                "email": form.value.emailFather1 != '' ? `${form.value.emailFather1}` : `${this.dataAspirantPos.aspirant.fatherTutor[1].email}`
               }
             ]
           }
         };
+        console.log(this.dataAspirantPosDAO);
+        console.log(this.dataAspirantPos);
+
         this.serviceEditPosgradoService.putAspirantPosgrade(this.servicioIdPosgradoService.getIdAspirantPosgrado(), aspirantBach).subscribe(
             () => {
               this.serviceAspirantService.putUpdate(this.servicioIdPosgradoService.getIdAspirant(), aspirant).subscribe(
