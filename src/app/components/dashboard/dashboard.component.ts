@@ -2,10 +2,10 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { ServiceAdministrativeService } from 'src/app/service/adminitrastive/service-administrative.service';
-import { Adminitrastive } from 'src/app/interface/adminitrastive_interface';
+import { ServiceAdministrativeService } from 'src/app/service/administrative/service-administrative.service';
 import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/basic/service-tip-search-nivel-basic.service';
 import { Router } from '@angular/router';
+import { Administrative } from '../../interface/adminitrastive_interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,14 +14,14 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnChanges{
 
-  dataAdmin: Adminitrastive= {
+  dataAdmin: Administrative= {
     id: 0,
     name: '',
     lastNameP: '',
     lastNameM: '',
     email: '',
     phone: '',
-    // password: ''
+    password: ''
   };
   nombre_Usuario: string = '';
 

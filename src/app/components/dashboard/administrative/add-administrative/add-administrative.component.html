@@ -1,0 +1,47 @@
+<form  #ngfpr (ngSubmit)="saveData(templateModific)" #templateModific="ngForm">
+  <div class="example-container">
+    <h1>Añadir Administrativo</h1>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput name="nameAsp" ngModel>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Apellido Paterno</mat-label>
+      <input matInput name="apePaternoAsp" ngModel>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Apellido Materno</mat-label>
+      <input matInput name="apeMaternoAsp" ngModel>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Telefono</mat-label>
+      <input matInput name="phone" ngModel>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Agregar correo Electronico</mat-label>
+      <input matInput placeholder="exampe@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" name="password" [(ngModel)]="password" autocomplete="off">
+      </mat-form-field>
+  </div>
+  <div class="containerB">
+    <div class="space"></div>
+    <div class="space">
+      <button mat-raised-button type="submit"
+        style="color: white; background-color: #1A73E8;">Aceptar</button>
+    </div>
+    <div class="space"></div>
+    <div class="space">
+      <button mat-raised-button routerLink="Administrative" style="color: white; background-color: #f36262;">Cancelar</button>
+    </div>
+    <div class="space"></div>
+  </div>
+</form>

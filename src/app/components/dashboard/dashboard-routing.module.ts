@@ -13,6 +13,7 @@ const routes: Routes = [
     {path:'NivelBachillerate',loadChildren: ()=> import('./nivel-educative/nivel-media/nivel-media.module').then(x=> x.NivelMediaModule)},
     {path:'NivelLicenciature',loadChildren: ()=> import('./nivel-educative/nivel-superior/licenciatura/licenciatura.module').then(x=> x.LicenciaturaModule)},
     {path:'NivelPosgrado',loadChildren: ()=> import('./nivel-educative/nivel-superior/posgrado/posgrado.module').then(x=> x.PosgradoModule)},
+    {path:'Administrative',loadChildren: ()=> import('./administrative/administrative.module').then(x=> x.AdministrativeModule)},
     {path: '**', redirectTo:'PerfilInicio', pathMatch:'full'}
   ]}
 ];

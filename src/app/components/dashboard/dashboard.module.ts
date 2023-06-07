@@ -17,7 +17,7 @@ import { EditAspirantComponent } from './nivel-educative/nivel-basic/edit-aspira
     PerfilInicioDashboardComponent,
     FormatAdministratorPipe,
     ViewAspirantComponent,
-    EditAspirantComponent
+    EditAspirantComponent,
   ],
   imports: [
     CommonModule,

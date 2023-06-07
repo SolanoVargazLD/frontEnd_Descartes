@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Adminitrastive } from '../../interface/adminitrastive_interface';
+import { Administrative } from '../../interface/adminitrastive_interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,8 @@ import { Adminitrastive } from '../../interface/adminitrastive_interface';
 
 export class ServiceAdministrativeService {
 
-  private idAdministrative: number= 1;
-  private url: string=  environment._apiURL+ 'administrative/';
+  private idAdministrative: number= 2;
+  private url: string=  environment._apiURL+ 'administrative';
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class ServiceAdministrativeService {
     this.idAdministrative = valor;
   }
 
-  public getData(): Observable<Adminitrastive> {
-    return this.http.get<Adminitrastive>(this.url+this.idAdministrative);
+  public getData(): Observable<Administrative> {
+    return this.http.get<Administrative>(this.url+'/'+this.idAdministrative);
   }
 }

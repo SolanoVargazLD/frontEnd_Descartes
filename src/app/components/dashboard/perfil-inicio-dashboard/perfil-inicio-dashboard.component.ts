@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceAdministrativeService } from 'src/app/service/adminitrastive/service-administrative.service';
-import { Adminitrastive } from '../../../interface/adminitrastive_interface';
+import { ServiceAdministrativeService } from 'src/app/service/administrative/service-administrative.service';
+import { Administrative } from '../../../interface/adminitrastive_interface';
 
 @Component({
   selector: 'app-perfil-inicio-dashboard',
@@ -8,14 +8,14 @@ import { Adminitrastive } from '../../../interface/adminitrastive_interface';
   styleUrls: ['./perfil-inicio-dashboard.component.css']
 })
 export class PerfilInicioDashboardComponent implements OnInit {
-  adminitrastive: Adminitrastive = {
+  adminitrastive: Administrative = {
     id: 0,
     name: '',
     lastNameP: '',
     lastNameM: '',
     email: '',
     phone: '',
-    // password: ''
+    password: ''
   };
 
   constructor(private serviceAdministrativeService: ServiceAdministrativeService) { }

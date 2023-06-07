@@ -65,6 +65,30 @@
             </a>
           </mat-nav-list>
         </mat-expansion-panel>
+        <mat-divider></mat-divider>
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+            Administrador
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="Administrative">
+              <mat-icon>groups</mat-icon>&nbsp;<span>Administrativos</span>
+            </a>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+              <mat-expansion-panel-header>
+                Carreras
+              </mat-expansion-panel-header>
+              <mat-nav-list>
+                <a mat-list-item routerLink="Administrative">
+                  <mat-icon>co_present</mat-icon>&nbsp;<span>Licenciatura</span>
+                </a>
+                <a mat-list-item routerLink="Administrative">
+                  <mat-icon>menu_book</mat-icon>&nbsp;<span>Posgrado</span>
+                </a>
+              </mat-nav-list>
+            </mat-expansion-panel>
+          </mat-nav-list>
+        </mat-expansion-panel>
       </mat-nav-list>
       <div class="contenedorIMG">
         <img src="assets/img/experienciaUnam.png" width="200px" height="80px" alt="experiencia_UNAM">

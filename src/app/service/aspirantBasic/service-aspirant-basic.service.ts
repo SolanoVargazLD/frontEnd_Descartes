@@ -8,19 +8,19 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServiceAspirantBasicService {
-  private url: string = environment._apiURL;
+  private url: string = environment._apiURL+'aspirantBasic/listNivelBasic?name=';
 
   constructor(private http: HttpClient) { }
 
   public getDataPreescolar(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPreescolar`);
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}Preescolar`);
   }
 
   public getDataPrimaria(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listPrimaria`);
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}Primaria`);
   }
 
   public getDataSecundaria(): Observable<aspirantNivelBasic[]> {
-    return this.http.get<aspirantNivelBasic[]>(`${this.url}aspirantBasic/listSecundaria`);
+    return this.http.get<aspirantNivelBasic[]>(`${this.url}Secundaria`);
   }
 }

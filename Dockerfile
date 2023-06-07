@@ -1,17 +1,20 @@
-FROM node:14-alpine as build-step
+# FROM node:14-alpine as build
 
-RUN mkdir -p /app
+# WORKDIR /app
 
-WORKDIR /app
+# COPY package.json /
 
-COPY package.json /app
+# RUN npm install
 
-RUN npm install
+# COPY . .
 
-COPY . /app
+# RUN npm run build --configuration=production
 
-RUN npm run build --prod
+# ##################&
+# FROM nginx:1.17.1-alpine as prod-stage
 
-FROM nginx:1.17.1-alpine
+# COPY --from=build /app/dist/descartes-front-end- /usr/share/nginx/html
 
-COPY --from=build-step /app/dist/ng-crud-card /usr/share/nginx/html
+# EXPOSE 80
+
+# CMD ["nginx", "-g","daemon off;"]

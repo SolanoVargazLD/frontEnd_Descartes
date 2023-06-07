@@ -22,7 +22,7 @@ export class ServiceAspirantService {
     return this.http.put<Aspirant>(`${this.url}/${id}`, data);
   }
 
-  public deleteAspirant(id: number,){
+  public deleteAspirant(id: number){
     return this.http.delete<boolean>(`${this.url}/${id}`);
   }
 
