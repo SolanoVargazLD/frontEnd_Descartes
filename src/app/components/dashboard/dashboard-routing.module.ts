@@ -14,6 +14,7 @@ const routes: Routes = [
     {path:'NivelLicenciature',loadChildren: ()=> import('./nivel-educative/nivel-superior/licenciatura/licenciatura.module').then(x=> x.LicenciaturaModule)},
     {path:'NivelPosgrado',loadChildren: ()=> import('./nivel-educative/nivel-superior/posgrado/posgrado.module').then(x=> x.PosgradoModule)},
     {path:'Administrative',loadChildren: ()=> import('./administrative/administrative.module').then(x=> x.AdministrativeModule)},
+    {path:'CarrerasSuperiores',loadChildren: ()=> import('./levelUpper/licenciature/licenciature.module').then(x=> x.LicenciatureModule)},
     {path: '**', redirectTo:'PerfilInicio', pathMatch:'full'}
   ]}
 ];
