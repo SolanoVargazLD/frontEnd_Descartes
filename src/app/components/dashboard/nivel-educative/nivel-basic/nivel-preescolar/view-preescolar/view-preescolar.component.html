@@ -3,11 +3,17 @@
   <span class="toolbar-item-spacer"> </span>
   <mat-label>No. Aspirantes: {{dataTamanio}}</mat-label>
   <span class="toolbar-item-spacer"> </span>
+  <button mat-raised-button type="submit"
+  style="color: white; background-color: #148f40;" (click)="genExcel()">Generar Reporte Excel</button>
+  &nbsp; &nbsp; &nbsp;
+  <button mat-raised-button  style="color: white; background-color: #f36262;">Cancelar</button>
+  <span class="toolbar-item-spacer"> </span>
   <mat-form-field>
     <mat-label> Buscar <mat-icon>search </mat-icon></mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Dato Aspirante" #input>
   </mat-form-field>
 </mat-toolbar>
+
 
 <div *ngIf="dataVacio===false" class="container mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="">

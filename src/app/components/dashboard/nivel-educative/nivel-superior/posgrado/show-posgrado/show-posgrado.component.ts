@@ -8,6 +8,7 @@ import { ServicioAspirantPosgradoService } from 'src/app/service/aspirantSuperio
 import { ServicioIdPosgradoService } from 'src/app/service/share_Inf/superior/posgrado/servicio-id-posgrado.service';
 
 import Swal from 'sweetalert2';
+import { ServiceExcelSuperiorPostService } from 'src/app/service/excel/nivelsuperiorPost/service-excel-superior-post.service';
 
 @Component({ selector: 'app-show-posgrado', templateUrl: './show-posgrado.component.html', styleUrls: ['./show-posgrado.component.css'] })
 export class ShowPosgradoComponent implements OnInit {
@@ -27,7 +28,11 @@ export class ShowPosgradoComponent implements OnInit {
   tipeBusqueda: string = '';
   @ViewChild(MatPaginator) paginator !: MatPaginator;
 
-  constructor(private serviceDataPosgradoService: ServiceDataPosgradoService, private servicioAspirantPosgradoService: ServicioAspirantPosgradoService, private servicioIdPosgradoService: ServicioIdPosgradoService, private serviceAspirantService: ServiceAspirantService) { }
+  constructor(private serviceDataPosgradoService: ServiceDataPosgradoService,
+    private servicioAspirantPosgradoService: ServicioAspirantPosgradoService,
+    private servicioIdPosgradoService: ServicioIdPosgradoService,
+    private serviceAspirantService: ServiceAspirantService,
+    private serviceExcelSuperiorPostService: ServiceExcelSuperiorPostService) { }
 
   ngOnInit(): void {
     if (this.servicioIdPosgradoService.getSelectedNivel() == '') {
@@ -119,6 +124,23 @@ export class ShowPosgradoComponent implements OnInit {
     console.log("nivel: "+this.servicioIdPosgradoService.getSelectedNivel());
     console.log("pos: "+ this.servicioIdPosgradoService.getSelectedPosgrad());
 
+  }
+
+  genExcel(){
+    this.serviceExcelSuperiorPostService.getDataBasicExcel(this.selected, this.selectedPosgrado).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+
+      // ? Fecha------------------
+      const today = new Date();
+      let day = String(today.getDate()).padStart(2, '0') + String(today.getMonth() + 1).padStart(2, '0')+String(today.getFullYear()).slice(-2);
+
+      link.download = `reporte_${this.selected}${this.selectedPosgrado}_${day}.xlsx`;
+      link.click();
+      URL.revokeObjectURL(url);
+    })
   }
 
 }

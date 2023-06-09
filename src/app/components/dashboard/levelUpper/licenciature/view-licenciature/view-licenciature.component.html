@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span>Administrativos</span>
+  <span>Carreras Nivel Superior</span>
   <span class="toolbar-item-spacer"> </span>
   <mat-label>No. Carreras: {{dataTamanio}}</mat-label>
   <span class="toolbar-item-spacer"> </span>
@@ -10,6 +10,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Dato Aspirante" #input>
   </mat-form-field>
 </mat-toolbar>
+
 
 <div *ngIf="dataVacio===false" class="container mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="">
@@ -43,7 +44,7 @@
       <td mat-cell *matCellDef="let element">
         <div class="celd-center-icon">
            <a class="pointer" ></a>
-          <a class="pointer" (click)="openDialogDelete(element.id, element.name)" style="color: #FF0000;  margin-right: 8px;" title=""
+          <a class="pointer" (click)="openDialogDelete(element.id, element.nameCareer)" style="color: #FF0000;  margin-right: 8px;" title=""
             matTooltip="Eliminar Aspirante">
             <mat-icon>delete</mat-icon>
           </a>

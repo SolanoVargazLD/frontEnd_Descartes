@@ -40,8 +40,6 @@ export class AddLicenciatureComponent {
             'id': 1
           }
         }
-        console.log(levelHigherAdd);
-
         this.licenciatureService.postDataLicenciature(levelHigherAdd).subscribe(response=>{
           this.router.navigateByUrl('/dashboard/CarrerasSuperiores');
         });

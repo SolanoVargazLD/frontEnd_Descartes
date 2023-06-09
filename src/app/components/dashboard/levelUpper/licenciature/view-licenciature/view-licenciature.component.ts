@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { LevelHigher } from 'src/app/interface/aspirant_Licenciature_data';
 import { AdministrativeService } from 'src/app/service/administrative/serviceAdministrative/administrative.service';
+import { ServiceExcelSuperiorService } from 'src/app/service/excel/nivelsuperior/service-excel-superior.service';
 import { LicenciatureService } from 'src/app/service/levelHigher/LicenciatureService/licenciature.service';
 
 import Swal from 'sweetalert2';
@@ -21,8 +22,7 @@ export class ViewLicenciatureComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   suscription: Subscription;
 
-  constructor(private administrativeService: AdministrativeService,
-    private licenciatureService: LicenciatureService) {}
+  constructor(private licenciatureService: LicenciatureService) {}
 
   ngOnInit(): void {
     this.readDataServiceLicenciatures();
@@ -49,9 +49,11 @@ export class ViewLicenciatureComponent implements OnInit{
   }
 
   openDialogDelete(id: number, name: string): void {
+    console.log("id_"+id);
+
     Swal.fire({
       title: 'ADVERTENCIA',
-      text: `Esta seguro(a) de eliminar La Licenciatura: ${name}`,
+      text: `Esta seguro(a) de eliminar La Carrera: ${name}`,
       icon: 'error',
       showCancelButton: true,
       confirmButtonColor: '#2a53c4',
@@ -59,10 +61,10 @@ export class ViewLicenciatureComponent implements OnInit{
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        if (this.administrativeService.deleteAdministrative(id).subscribe()) {
+        if (this.licenciatureService.deleteLicenciature(id).subscribe()) {
           Swal.fire(
             'Eliminado',
-            'Licenciatura eliminada de la lista',
+            'Carrera eliminada de la lista',
             'success'
           ).then((result)=>{
             window.location.reload();
@@ -70,12 +72,12 @@ export class ViewLicenciatureComponent implements OnInit{
         } else {
           Swal.fire(
             'Fallo',
-            'Licenciatura no eliminada, revisar informacion.',
+            'Carrera eliminada, revisar informacion.',
             'question'
           );
         };
       }
     });
-
   }
+
 }

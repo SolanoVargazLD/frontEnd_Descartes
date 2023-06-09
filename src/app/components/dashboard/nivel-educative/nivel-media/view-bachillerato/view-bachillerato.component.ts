@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { AspirantNivelUpper } from '../../../../../interface/aspirantBachillerate_interface';
 import { ServiceIdBachillerAspirantService } from 'src/app/service/share_Inf/media/service-id-bachiller-aspirant.service';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
+import { ServiceExcelMediaService } from 'src/app/service/excel/nivelMedia/service-excel-media.service';
 
 @Component({
   selector: 'app-view-bachillerato',
@@ -23,7 +24,8 @@ export class ViewBachilleratoComponent implements OnInit {
 
   constructor(private serviceAspirantBachillerateService: ServiceAspirantBachillerateService,
     private serviceIdBachillerAspirantService: ServiceIdBachillerAspirantService,
-    private serviceAspirantService: ServiceAspirantService) { }
+    private serviceAspirantService: ServiceAspirantService,
+    private serviceExcelMediaService: ServiceExcelMediaService) { }
 
   ngOnInit(): void {
     this.readDataServiceAspirantBasic();
@@ -96,4 +98,20 @@ export class ViewBachilleratoComponent implements OnInit {
     this.serviceIdBachillerAspirantService.setIdAspirantBachiller(id_b);
   }
 
+  genExcel(){
+    this.serviceExcelMediaService.getDataBasicExcel().subscribe(response => {
+      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+
+      // ? Fecha------------------
+      const today = new Date();
+      let day = String(today.getDate()).padStart(2, '0') + String(today.getMonth() + 1).padStart(2, '0')+String(today.getFullYear()).slice(-2);
+
+      link.download = `reporte_bachillerate_${day}.xlsx`;
+      link.click();
+      URL.revokeObjectURL(url);
+    })
+  }
 }

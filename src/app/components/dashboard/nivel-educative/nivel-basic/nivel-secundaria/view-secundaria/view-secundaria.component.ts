@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { aspirantNivelBasic } from 'src/app/interface/aspirantBasic_interface';
 import { ServiceAspirantService } from 'src/app/service/aspirant/service-aspirant.service';
 import { ServiceAspirantBasicService } from 'src/app/service/aspirantBasic/service-aspirant-basic.service';
+import { ServiceExcelBasicService } from 'src/app/service/excel/nivelBasic/service-excel-basic.service';
 import { ServiceIdAspirantService } from 'src/app/service/share_Inf/basic/service-id-aspirant.service';
 import { ServiceTipSearchNivelBasicService } from 'src/app/service/share_Inf/basic/service-tip-search-nivel-basic.service';
 
@@ -29,6 +30,7 @@ export class ViewSecundariaComponent implements OnInit{
     private serviceSharedAspirant: ServiceIdAspirantService,
     private serviceAspirantService: ServiceAspirantService,
     private serviceTipSearchNivelBasicService: ServiceTipSearchNivelBasicService,
+    private serviceExcelBasicService: ServiceExcelBasicService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -94,6 +96,23 @@ export class ViewSecundariaComponent implements OnInit{
   clickViewAspirant(id: number, vista: string) {
     this.serviceSharedAspirant.setIdAspirant(id);
     this.serviceTipSearchNivelBasicService.setTipoNivelBasic(vista);
+  }
+
+  genExcel(){
+    this.serviceExcelBasicService.getDataBasicExcel("Secundaria").subscribe(response => {
+      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+
+      // ? Fecha------------------
+      const today = new Date();
+      let day = String(today.getDate()).padStart(2, '0') + String(today.getMonth() + 1).padStart(2, '0')+String(today.getFullYear()).slice(-2);
+
+      link.download = `reporte_secundaria_${day}.xlsx`;
+      link.click();
+      URL.revokeObjectURL(url);
+    })
   }
 
 }

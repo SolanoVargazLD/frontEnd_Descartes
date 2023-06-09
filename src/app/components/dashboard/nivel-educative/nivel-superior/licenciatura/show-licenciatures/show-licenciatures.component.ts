@@ -8,6 +8,7 @@ import { ListSuperiorService } from 'src/app/service/aspirantSuperior/licenciatu
 import { ServiceIdLicenciatureService } from 'src/app/service/share_Inf/superior/licenciature/service-id-licenciature.service';
 
 import Swal from 'sweetalert2';
+import { ServiceExcelSuperiorService } from 'src/app/service/excel/nivelsuperior/service-excel-superior.service';
 
 @Component({
   selector: 'app-show-licenciatures',
@@ -26,7 +27,8 @@ export class ShowLicenciaturesComponent implements OnInit {
   constructor(private listSuperiorService: ListSuperiorService,
     private serviceIdLicenciatureService: ServiceIdLicenciatureService,
     private serviceAspirantService: ServiceAspirantService,
-    private serviceViewDataLicenciatureService: ServiceViewDataLicenciatureService) { }
+    private serviceViewDataLicenciatureService: ServiceViewDataLicenciatureService,
+    private serviceExcelSuperiorService: ServiceExcelSuperiorService) { }
 
   ngOnInit(): void {
     if (this.serviceIdLicenciatureService.getSelected() == '') {
@@ -119,8 +121,23 @@ export class ShowLicenciaturesComponent implements OnInit {
     this.serviceIdLicenciatureService.setIdAspirant(id);
     this.serviceIdLicenciatureService.setIdAspirantLicenciature(id_b);
      this.serviceIdLicenciatureService.setSelected(this.selected);
+  }
 
+  genExcel(){
+    this.serviceExcelSuperiorService.getDataBasicExcel(this.selected).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
 
+      // ? Fecha------------------
+      const today = new Date();
+      let day = String(today.getDate()).padStart(2, '0') + String(today.getMonth() + 1).padStart(2, '0')+String(today.getFullYear()).slice(-2);
+
+      link.download = `reporte_${this.selected}_${day}.xlsx`;
+      link.click();
+      URL.revokeObjectURL(url);
+    })
   }
 
 }
