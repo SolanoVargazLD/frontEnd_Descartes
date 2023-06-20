@@ -16,8 +16,4 @@ export class ServiceDataPosgradoService {
     return this.http.get<listSuperior[]>(`${this.url}/postgraduate?nivelEducativePosgrado=${nivel}`);
   }
 
-  // public getlistPosgrado(nivel: string, career: string){
-  //   return this.http.get<AspirantPostgrado>(`${this.url}/postgraduate?nivelEducativePosgrado=${nivel}`);
-  // }
-  // http://localhost:8080/api/descartes/aspirantPostgraduate/especific?nameCareer=IA&nivelEducativo=Doctorado
 }

@@ -51,8 +51,6 @@ export class ViewBachilleratoComponent implements OnInit {
         }
       });
     this.tipeBusqueda = 'Bachillerato';
-
-
   }
 
   openDialog(id_asp: number, nombre: string, apP: string, apM: string, curp: string): void {

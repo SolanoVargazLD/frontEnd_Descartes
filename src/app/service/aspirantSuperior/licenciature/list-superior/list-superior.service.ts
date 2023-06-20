@@ -14,4 +14,8 @@ export class ListSuperiorService {
   public getListLicenciature(){
     return this.http.get<listSuperior[]>(`${this.url}/listLicenciature`);
   }
+
+  public getListPosgrado(posgrado:string){
+      return this.http.get<listSuperior[]>(`${this.url}/postgraduate?nivelEducativePosgrado=${posgrado}`);
+    }
 }

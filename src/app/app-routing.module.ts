@@ -6,6 +6,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch:'full'}, //TODO Redireccionar a login
   {path: 'login', component: LoginComponent},//TODO direccion a login
   {path:'dashboard',loadChildren: ()=> import('./components/dashboard/dashboard.module').then(x=> x.DashboardModule)},
+  {path:'preinscripcion',loadChildren: ()=> import('./components/formularios-aspirants/formularios-aspirants.module').then(x=> x.FormulariosASpirantsModule)},
   {path: '**', redirectTo: 'login', pathMatch:'full'}, //TODO Redireccionar a login, normalmente es el error 404
 ];
 
@@ -13,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

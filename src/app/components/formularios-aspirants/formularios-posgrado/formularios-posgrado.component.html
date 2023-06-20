@@ -1,0 +1,242 @@
+<form  #ngfpr (ngSubmit)="saveData(templateModific)" #templateModific="ngForm">
+  <div class="container-field">
+    <h1>Solicitar Preinscripción Posgrado</h1>
+  </div>
+
+  <div class="container-principal">
+    <br>
+    <h2>INFORMACIÓN DEL ASPIRANTE</h2>
+    <br>
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>NOMBRE(S)</mat-label>
+        <input matInput name="nameAspA"  [(ngModel)]="formData.nameAsp" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>APELLIDO PATERNO </mat-label>
+        <input matInput name="apePaternoAspA" [(ngModel)]="formData.apePaternoAsp">
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>APELLIDO MATERNO</mat-label>
+        <input matInput name="apeMaternoAspA" [(ngModel)]="formData.apeMaternoAsp">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>CURP </mat-label>
+        <input matInput name="curpAspA" [(ngModel)]="formData.curpAsp">
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>TELEFONO</mat-label>
+        <input matInput name="phoneAspA" [(ngModel)]="formData.phoneAsp">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>AGREGAR CORREO ELECTRONICO</mat-label>
+        <input matInput placeholder="exampe@example.com" [formControl]="email3" required>
+        <mat-error *ngIf="email3.invalid">{{getErrorMessage3()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>TIPO DE SANGRE</mat-label>
+        <input matInput name="sangreAspA" [(ngModel)]="formData.sangreAsp">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>SEXO</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option value="H">Masculino</mat-option>
+          <mat-option value="M">Femenino</mat-option>
+          <mat-option value="O">Omitir</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width-Completed">
+        <mat-label>PROBLEMAS DE CONDICIÓN MEDICA</mat-label>
+        <input matInput name="nameConditA" [(ngModel)]="formData.nameCondit">
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+    <br>
+    <h2>INFORMACIÓN ESCOLAR</h2>
+
+    <div class="container-field">
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>NIVEL DEL POSGRADO:</mat-label>
+        <mat-select [(value)]="nivelPosgrado" >
+          <mat-option value="Maestria" (click)="pruebaNivel()">Maestria</mat-option>
+          <mat-option value="Doctorado" (click)="pruebaNivel()">Doctorado</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>ELEGIR POSGRADO :</mat-label>
+        <mat-select [(value)]="careerName" name="lic">
+          <mat-option  *ngFor="let lic of dataLic" [value]="lic.name" (click)="enviarDataSelect(lic.id)">{{lic.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-label>CUENTA CON CEDULA PROFESIONAL:</mat-label>
+      <mat-radio-group name="selectedOptionN" [(ngModel)]="selectedOption">
+        <mat-radio-button value="0">No</mat-radio-button>
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>CÉDULA: </mat-label>
+        <input matInput name="escProcA" [(ngModel)]="formData.cedula">
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+    <br>
+    <h2>INFORMACIÓN DE LA DIRECCION</h2>
+    <br>
+    <div class="container-field">
+      <mat-form-field class="example-full-width-tree">
+        <mat-label>CALLE</mat-label>
+        <input matInput name="calleDirA" [(ngModel)]="formData.calleDir">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width-tree">
+        <mat-label>NÚMERO</mat-label>
+        <input matInput name="numDirA" [(ngModel)]="formData.numDir">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width-tree">
+        <mat-label>COLONIA</mat-label>
+        <input matInput name="colDirA" [(ngModel)]="formData.colDir">
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>MUNICIPIO </mat-label>
+        <input matInput name="munDirA" [(ngModel)]="formData.munDir">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>CÓDIGO POSTAL </mat-label>
+        <input matInput name="codPDirA" [(ngModel)]="formData.codPDir">
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <br>
+    <h2>INFORMACIÓN DE PADRE O TUTOR 1</h2>
+    <br>
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>NOMBRE(S)</mat-label>
+        <input matInput name="namePadTutor1A"[(ngModel)]="formData.namePadTutor1">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>APELLIDO PATERNO</mat-label>
+        <input matInput name="apePaternoPadTutor1A" [(ngModel)]="formData.apePaternoPadTutor1">
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>APELLIDO MATERNO </mat-label>
+        <input matInput name="apeMaternoPadTutor1A" [(ngModel)]="formData.apeMaternoPadTutor1">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>AGREGAR CORREO ELECTRONICO</mat-label>
+        <input matInput placeholder="exampe@example.com" [formControl]="email1" required>
+        <mat-error *ngIf="email1.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>NÚMERO TELEFONICO 1 </mat-label>
+        <input matInput name="phone1PadTutor1A" [(ngModel)]="formData.phone1PadTutor1">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>NÚMERO TELEFONICO 2 </mat-label>
+        <input matInput name="phone2PadTutor1A" [(ngModel)]="formData.phone2PadTutor1">
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <br>
+    <h2>INFORMACIÓN DE PADRE O TUTOR 2</h2>
+    <br>
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>NOMBRE(S)</mat-label>
+        <input matInput name="namePadTutor2A" [(ngModel)]="formData.namePadTutor2">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>APELLIDO PATERNO</mat-label>
+        <input matInput name="apePaternoPadTutor2A" [(ngModel)]="formData.apePaternoPadTutor2">
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>APELLIDO MATERNO </mat-label>
+        <input matInput name="apeMaternoPadTutor2A" [(ngModel)]="formData.apeMaternoPadTutor2">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>AGREGAR CORREO ELECTRONICO</mat-label>
+        <input matInput placeholder="exampe@example.com" [formControl]="email2" required>
+        <mat-error *ngIf="email2.invalid">{{getErrorMessage2()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="container-field">
+      <mat-form-field class="example-full-width">
+        <mat-label>NÚMERO TELEFONICO 1 </mat-label>
+        <input matInput name="phone1PadTutor2A" [(ngModel)]="formData.phone1PadTutor2">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>NÚMERO TELEFONICO 2 </mat-label>
+        <input matInput name="phone2PadTutor2A" [(ngModel)]="formData.phone2PadTutor2">
+      </mat-form-field>
+    </div>
+
+    <div class="container-field-check">
+      <p> Acepto los terminos del  <a href=""> Aviso de privacidad </a> </p>
+      <br>
+      <mat-checkbox name="checked" class="example-margin" [(ngModel)]="checked">Entendido</mat-checkbox>
+    </div>
+
+    <div class="containerB">
+
+      <div class="space"></div>
+      <div class="space">
+        <button mat-raised-button type="submit"
+          style="color: white; background-color: #1A73E8;">Aceptar</button>
+      </div>
+      <div class="space"></div>
+      <div class="space">
+        <button mat-raised-button type="button" (click)="salir()" style="color: white; background-color: #f36262;">Cancelar</button>
+      </div>
+      <div class="space"></div>
+    </div>
+  </div>
+</form>

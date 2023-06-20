@@ -22,6 +22,4 @@ export class ServiceAspirantBasicService {
   public getDataSecundaria(): Observable<aspirantNivelBasic[]> {
     return this.http.get<aspirantNivelBasic[]>(`${this.url}Secundaria`);
   }
-
-
 }

@@ -36,3 +36,24 @@ export interface putAspirantDTO extends Omit<Aspirant, 'id'|'fatherTutor'|'addre
   address: AddressInt;
 }
 
+export interface AspirantPost extends Omit<Aspirant, 'id'|'fatherTutor'|'address'>{
+  fatherTutor: FatherTutorPost[];
+  address: AddressPost;
+}
+
+export interface FatherTutorPost {
+  name: string;
+  lastNameP: string;
+  lastNameM: string;
+  phone1: string;
+  phone2: string;
+  email: string;
+}
+
+export interface AddressPost {
+  street: string;
+  number: string;
+  colony: string;
+  municipality: string;
+  postal_code: string;
+}

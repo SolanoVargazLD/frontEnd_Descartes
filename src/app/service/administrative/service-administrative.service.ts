@@ -10,7 +10,7 @@ import { Administrative } from '../../interface/adminitrastive_interface';
 
 export class ServiceAdministrativeService {
 
-  private idAdministrative: number= 2;
+  private idAdministrative: number= 1;
   private url: string=  environment._apiURL+ 'administrative';
 
   constructor(private http: HttpClient) { }

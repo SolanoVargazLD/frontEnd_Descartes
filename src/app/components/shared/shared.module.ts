@@ -24,7 +24,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -52,7 +53,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatTooltipModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   exports:[
     MatFormFieldModule,
@@ -76,7 +79,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatTooltipModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

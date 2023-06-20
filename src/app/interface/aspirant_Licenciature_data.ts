@@ -52,3 +52,19 @@ export interface Address {
 
 export interface AspirantLicenciatureDataDAO extends Omit<AspirantLicenciatureData, 'id'| 'aspirant'| 'levelHigher'>{
 }
+
+export interface Aspirant {
+	id: number;
+}
+
+export interface LevelHigherD {
+	id: number;
+}
+
+export interface AspirantLicenciaturePost {
+	schoolOrigin: string;
+	phone: string;
+	email: string;
+	aspirant: Aspirant;
+	levelHigher: LevelHigherD;
+}

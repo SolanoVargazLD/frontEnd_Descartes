@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aspirant, putAspirantDTO } from 'src/app/interface/aspirant_interface';
+import { Aspirant, AspirantPost, putAspirantDTO } from 'src/app/interface/aspirant_interface';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -16,6 +16,10 @@ export class ServiceAspirantService {
 
   public getDataId(id: number): Observable<Aspirant> {
     return this.http.get<Aspirant>(`${this.url}/${id}`);
+  }
+
+  public postUpdate(data: AspirantPost){
+    return this.http.post<number>(this.url, data);
   }
 
   public putUpdate(id: number,data: putAspirantDTO){

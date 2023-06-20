@@ -8,3 +8,18 @@ export interface AspirantPostgrado{
   tip_asp: string;
 }
 
+export interface Aspirant {
+	id: number;
+}
+
+export interface LevelHigher {
+	id: number;
+}
+
+export interface AspirantePosgradoADD {
+	professionalLicense: string;
+	email: string;
+	phone: string;
+	aspirant: Aspirant;
+	levelHigher: LevelHigher;
+}

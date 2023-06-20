@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { AdministrativeService } from 'src/app/service/administrative/serviceAdministrative/administrative.service';
 import { LicenciatureService } from 'src/app/service/levelHigher/LicenciatureService/licenciature.service';
 import { LevelHigherAdd } from 'src/app/interface/levelHigher_interface';
 

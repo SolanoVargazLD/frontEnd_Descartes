@@ -8,12 +8,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ServiceExcelSuperiorService {
-  private url: string = environment._apiURL+'aspirantPostgraduate';
+  private url: string = environment._apiURL+'aspirantSuperior';
 
   constructor(private http: HttpClient) { }
 
   public getDataBasicExcel(basic: string) {
-    return this.http.get(`${this.url}/ReportePosgradoXlxs?nivelCareer=${basic}`, { responseType: 'blob' });
+    return this.http.get(`${this.url}/ReporteLicenciatureXlxs?nameCareer=${basic}`, { responseType: 'blob' });
   }
 }
-//

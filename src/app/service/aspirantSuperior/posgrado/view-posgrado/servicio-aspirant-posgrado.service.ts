@@ -1,6 +1,6 @@
  import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AspirantPostgrado } from 'src/app/interface/aspirant_posgrado';
+import { AspirantPostgrado, AspirantePosgradoADD } from 'src/app/interface/aspirant_posgrado';
 import { AspirantPosgradoData, AspirantPosgradoDataDAO } from 'src/app/interface/aspirant_posgrado_data';
 import { environment } from 'src/environments/environment.development';
 
@@ -13,6 +13,10 @@ export class ServicioAspirantPosgradoService {
 
   public getAspirantPosgrado(id: number){
     return this.http.get<AspirantPosgradoData>(`${this.url}/${id}`);
+  }
+
+  public postAspirantPosgrado(data: AspirantePosgradoADD){
+    return this.http.post<number>(`${this.url}`, data);
   }
 
   public getlistPosgrado(career: string, nivel: string){

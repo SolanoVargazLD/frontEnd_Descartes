@@ -52,4 +52,8 @@ export class LoginComponent implements OnInit {
       this._router.navigate(['dashboard']);
     }, 1500);
   }
+
+  salir(){
+    window.location.href = 'https://udescartesresidenciaitste.000webhostapp.com/';
+  }
 }
